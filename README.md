@@ -1,5 +1,3 @@
-== README
-
 # Kajaeru
 
 ## 環境構築
