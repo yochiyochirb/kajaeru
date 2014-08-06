@@ -1,8 +1,8 @@
 == README
 
-h1. Kajaeru
+# Kajaeru
 
-h2. 環境構築
+## 環境構築
 
 ```sh
 git clone https://github.com/yochiyochirb/kajaeru.git
