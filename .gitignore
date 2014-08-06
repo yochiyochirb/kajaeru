@@ -25,3 +25,5 @@ doc/
 .idea
 .secret
 
+# database settings
+/config/database.yml
