@@ -44,7 +44,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'pg', '0.17.1'
+gem 'pg'
 gem 'omniauth-github'
 gem 'haml-rails'
 
