@@ -44,6 +44,19 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group :produciton do
+gem 'pg'
+gem 'omniauth-github'
+gem 'haml-rails'
+
+group :development do
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
+group :production do
   gem 'unicorn'
+  gem 'rails_12factor'
 end
