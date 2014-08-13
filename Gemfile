@@ -36,10 +36,20 @@ end
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'pg'
+gem 'omniauth-github'
+gem 'pry'
+gem 'pry-nav'
+gem 'quiet_assets'
+gem 'haml-rails'
+gem 'better-errors'
+gem 'binding_of_caller'
+
