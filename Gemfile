@@ -44,7 +44,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'pg'
+gem 'pg', '0.17.1'
 gem 'omniauth-github'
 gem 'haml-rails'
 
@@ -54,4 +54,8 @@ group :development do
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
+end
+
+group :procution do
+  gem 'rails_12factor'
 end
