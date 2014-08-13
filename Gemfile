@@ -52,6 +52,6 @@ group :development do
   gem 'pry'
   gem 'pry-nav'
   gem 'quiet_assets'
-  gem 'better-errors'
+  gem 'better_errors'
   gem 'binding_of_caller'
 end
