@@ -57,6 +57,11 @@ group :development do
   gem 'sqlite3'
 end
 
+group :test do
+  gem 'pry'
+  gem 'pry-nav'
+end
+
 group :production do
   gem 'unicorn'
   gem 'rails_12factor'
