@@ -42,15 +42,13 @@ gem 'omniauth-github'
 gem 'haml-rails'
 
 group :development do
-  gem 'pry'
-  gem 'pry-nav'
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'sqlite3'
 end
 
-group :test do
+group :development, :test do
   gem 'pry'
   gem 'pry-nav'
 end
