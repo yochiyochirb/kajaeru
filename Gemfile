@@ -38,7 +38,6 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'pg'
 gem 'omniauth-github'
 gem 'haml-rails'
 
@@ -58,5 +57,6 @@ end
 
 group :production do
   gem 'unicorn'
+  gem 'pg'
   gem 'rails_12factor'
 end
