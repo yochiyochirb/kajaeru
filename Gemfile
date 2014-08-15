@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
 
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -35,29 +32,29 @@ end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'pg'
 gem 'omniauth-github'
 gem 'haml-rails'
 
 group :development do
-  gem 'pry'
-  gem 'pry-nav'
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'sqlite3'
 end
 
+group :development, :test do
+  gem 'pry'
+  gem 'pry-nav'
+end
+
 group :production do
   gem 'unicorn'
+  gem 'pg'
   gem 'rails_12factor'
 end
