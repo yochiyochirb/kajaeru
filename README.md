@@ -15,3 +15,6 @@ bundle exec rake db:migrate
 
 bundle exec rails server
 ```
+
+## 作業に入るまえに
+[Wiki](https://github.com/yochiyochirb/kajaeru/wiki) に開発ルールやスケジュールがまとめてありますので、ご一読ください。
