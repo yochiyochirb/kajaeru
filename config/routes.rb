@@ -1,9 +1,7 @@
 Kajaeru::Application.routes.draw do
-  get "votes/new"
-  get "votes/show"
-  get "votes/edit"
-  get "votes/update"
-  get "votes/create"
+
+  resources :votes, except: %i(index destroy)
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
