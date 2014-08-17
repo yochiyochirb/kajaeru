@@ -1,6 +1,6 @@
 # add seed data of members
 
-nicknames = %w(yucao kitamuuu highwide shiraichi_ryota bonbon0605 shokola pupupopo talktome katorie)
+nicknames = %w(yucao kitamuuu highwide shiraishi_ryota bonbon0605 shokola pupupopo talktome katorie)
 nicknames.each do |nickname|
   Member.create(nickname: nickname, 
                 provider: "github",
