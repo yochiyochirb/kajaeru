@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140818173520) do
     t.datetime "updated_at"
   end
 
-  add_index "members", ["nickname", "uid", "image"], name: "index_members_on_nickname_and_uid_and_image", unique: true
+  add_index "members", ["nickname", "uid", "image"], name: "members_unique_index", unique: true
 
   create_table "votes", force: true do |t|
     t.text     "comment"
@@ -32,6 +32,6 @@ ActiveRecord::Schema.define(version: 20140818173520) do
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["voting_member_id"], name: "index_votes_on_voting_member_id", unique: true
+  add_index "votes", ["voting_member_id"], name: "votes_unique_index", unique: true
 
 end
