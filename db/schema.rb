@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816164338) do
+ActiveRecord::Schema.define(version: 20140818173520) do
 
   create_table "members", force: true do |t|
     t.string   "nickname",   null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140816164338) do
     t.datetime "updated_at"
   end
 
+  add_index "members", ["nickname", "uid", "image"], name: "index_members_on_nickname_and_uid_and_image", unique: true
   add_index "members", ["uid"], name: "index_members_on_uid", unique: true
 
   create_table "votes", force: true do |t|
@@ -31,5 +32,7 @@ ActiveRecord::Schema.define(version: 20140816164338) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "votes", ["voting_member_id"], name: "index_votes_on_voting_member_id", unique: true
 
 end
