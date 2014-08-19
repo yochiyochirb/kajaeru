@@ -1,4 +1,5 @@
 Kajaeru::Application.routes.draw do
+<<<<<<< HEAD
   get "member/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -54,4 +55,6 @@ Kajaeru::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+ resources :votes, except: %i(index destroy)
+ eb4cdbf0f94bdc5234be1c5d7afe26d688e45164
 end
