@@ -55,6 +55,6 @@ Kajaeru::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
- resources :votes, except: %i(index destroy)
- eb4cdbf0f94bdc5234be1c5d7afe26d688e45164
+ Kajaeru::Application.routes.draw do
+  resources :votes, except: %i(index destroy)
 end
