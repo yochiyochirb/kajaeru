@@ -2,7 +2,7 @@
 %p Find me in app/views/votes/new.html.haml
 
 - if @members.present?  
-  = form_for :vote, :url => {:action => 'create'} do |f|
+  = form_for :vote, url: {action: 'create'} do |f|
     - @members.each_with_index do |m,i|
       = f.radio_button :voted_member_id, m.id, {checked: i == 0}
       = m.nickname
@@ -10,6 +10,6 @@
     = f.text_area :comment
     %br
     / TODO: voting_member_idのvalueはログインユーザのidをセットする
-    = f.hidden_field :voting_member_id, :value => "1"
+    = f.hidden_field :voting_member_id, value: "1"
     = f.submit '投票する'
 
