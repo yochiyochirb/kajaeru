@@ -1,3 +1,12 @@
 %h1 Vote Kaja of yochiyochirb! Kajaeru!
 
 = image_tag "yochi_rabbit.jpg", alt: "よちよち.rb", width: 500
+
+%ul
+  - if !@members.empty?
+    - @members.each do |member|
+      %li
+        = image_tag member.image + '&s=64', alt: member.nickname
+        %span= member.nickname
+  - else
+    %li No members
