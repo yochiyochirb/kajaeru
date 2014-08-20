@@ -1,5 +1,5 @@
 Kajaeru::Application.routes.draw do
-  get "members/index"
-  root "members#index"
+  resources :members, only: %i(index)
+  root 'members#index'
   resources :votes, except: %i(index destroy)
 end
