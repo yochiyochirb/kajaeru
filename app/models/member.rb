@@ -5,11 +5,11 @@ class Member < ActiveRecord::Base
   validates :image,    presence: true, uniqueness: true
 
   def self.create_with_omniauth(auth)
-  	create! do |member|
- 			member.provider = auth['provider']
- 			member.uid      = auth['uid']
- 			member.nickname = auth['info']['nickname']
- 			member.image    = auth['info']['image']
- 		end
+    create! do |member|
+      member.provider = auth['provider']
+      member.uid      = auth['uid']
+      member.nickname = auth['info']['nickname']
+      member.image    = auth['info']['image']
+    end
   end
 end
