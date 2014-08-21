@@ -1,8 +1,6 @@
 %h1 Vote Kaja of yochiyochirb! Kajaeru!
+%p Hello, #{current_user.nickname}!
 
 = image_tag "yochi_rabbit.jpg", alt: "よちよち.rb", width: 500
 
-- if current_user
-  = link_to 'Sign out', '/signout'
-- else
-  = link_to 'Sign in with Github', '/auth/github'
+= link_to 'Sign out', signout_path, method: 'delete'

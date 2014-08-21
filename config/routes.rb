@@ -4,5 +4,6 @@ Kajaeru::Application.routes.draw do
   resources :votes, except: %i(index destroy)
 
   get '/auth/:provider/callback' => 'sessions#callback'
-  get '/signout'                 => 'sessions#destroy'
+  get '/signin'                  => 'sessions#new'
+  delete '/signout'              => 'sessions#destroy'
 end
