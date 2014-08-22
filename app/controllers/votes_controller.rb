@@ -11,6 +11,20 @@ class VotesController < ApplicationController
   def update 
   end
 
-  def create 
+  def create
+    vote = Vote.new(permit_param)
+    vote[:voting_member_id] = session[:user_id]
+    begin
+      vote.save!
+    rescue
+      redirect_to action:'new'
+    end
+    redirect_to action:'show', id:vote.id
+  end
+
+  private
+
+  def permit_param
+    param = params.require(:vote).permit(:voted_member_id, :comment)
   end
 end
