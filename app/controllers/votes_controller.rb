@@ -17,7 +17,8 @@ class VotesController < ApplicationController
     begin
       vote.save!
       redirect_to action:'show', id:vote.id
-    rescue
+    rescue => e
+      puts e.message
       redirect_to action:'new'
     end
   end
