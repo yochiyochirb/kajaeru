@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-	def destroy
-		reset_session
-		redirect_to signin_path
-	end
+  def destroy
+    reset_session
+    redirect_to signin_path
+  end
 end
