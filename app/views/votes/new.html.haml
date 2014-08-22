@@ -1,15 +1,14 @@
 %h1 Let's vote the ruby kaja of yochiyochirb! 
 
-- if @members.present?  
-  = form_for :vote, url: {action: 'create'} do |f|
-    - @members.each_with_index do |member,i|
-      = f.radio_button :voted_member_id, member.id, {checked: i == 0}
-      = member.nickname
-      %br
+= form_for :vote, url: {action: 'create'} do |f|
+  - @members.each_with_index do |member,i|
+    = f.radio_button :voted_member_id, member.id, {checked: i == 0}
+    = member.nickname
     %br
-    = f.label :comment, '推薦コメント'
-    %br
-    = f.text_area :comment
-    %br
-    = f.submit '投票する'
+  %br
+  = f.label :comment, '推薦コメント'
+  %br
+  = f.text_area :comment
+  %br
+  = f.submit '投票する'
 
