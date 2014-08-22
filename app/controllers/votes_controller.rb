@@ -16,10 +16,10 @@ class VotesController < ApplicationController
     vote[:voting_member_id] = session[:user_id]
     begin
       vote.save!
+      redirect_to action:'show', id:vote.id
     rescue
       redirect_to action:'new'
     end
-    redirect_to action:'show', id:vote.id
   end
 
   private
