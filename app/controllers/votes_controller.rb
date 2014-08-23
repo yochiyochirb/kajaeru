@@ -11,7 +11,15 @@ class VotesController < ApplicationController
   def edit
   end
 
-  def update 
+  def update
+    @vote = current_user.votings.find(params[:id])
+
+    if @vote.update_attributes(vote_params)
+      flash[:notice] = '投票を更新しました。'
+      redirect @vote
+    else
+      render :edit
+    end
   end
 
   def create 
