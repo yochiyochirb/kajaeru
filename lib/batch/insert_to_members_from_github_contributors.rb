@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 require 'open-uri'
 
 res = open('https://api.github.com/repos/yochiyochirb/meetups/stats/contributors')
