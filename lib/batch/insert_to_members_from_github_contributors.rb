@@ -2,6 +2,7 @@ require 'open-uri'
 
 res = open('https://api.github.com/repos/yochiyochirb/meetups/stats/contributors')
 
+# res.status => ["200", "OK"]
 status, msg = res.status 
 
 if status == '200'
