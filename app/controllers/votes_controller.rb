@@ -1,5 +1,8 @@
 class VotesController < ApplicationController
   def new
+    # 投票されるメンバーを取得
+    @members = Member.all
+
   end
 
   def show
