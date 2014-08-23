@@ -16,11 +16,12 @@ class VotesController < ApplicationController
 
   def create
     vote = Vote.new(vote_params)
-    vote.voting_member_id = session[:user_id] 
+    vote.voting_member_id = session[:user_id]
     if vote.save
       redirect_to vote, notice: 'Vote was successfully created.'
     else
-      render action: 'new'
+      @members = Member.all
+      render :new
     end
   end
 
