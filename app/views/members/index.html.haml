@@ -7,5 +7,4 @@
     %li
       = image_tag member.image, alt: member.nickname, size: '40x40'
       %span= member.nickname
-%a{href: '/votes/new'}
-  %button 投票する
+= link_to '投票する', new_vote_path
