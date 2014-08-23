@@ -30,6 +30,8 @@ cp config/database.yml.sample config/database.yml
 bundle exec rake db:create
 bundle exec rake db:migrate
 
+bundle exec rails runner lib/batch/insert_to_members_from_github_contributors.rb
+
 # ex) bash,zsh
 export GITHUB_CLIENT_ID="XXXXXXXXX"         # Kajaeru用のClient IDを設定
 export GITHUB_CLIENT_SECRET="XXXXXXXXXXXXX" # Kajaeru用のClient Secretを設定
