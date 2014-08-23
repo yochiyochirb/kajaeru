@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - 2.0.0
+before_script:
+  - "cp ./config/database.yml.sample ./config/database.yml"
 notifications:
   webhooks:
     - https://idobata.io/hook/travis_ci/ec086ac3-296b-472e-aecc-c2254477e97c
