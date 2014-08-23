@@ -24,7 +24,8 @@ class VotesController < ApplicationController
     end
   end
 
-  def create 
+  def create
+  end
 
   private
 
