@@ -6,6 +6,8 @@ class VotesController < ApplicationController
   end
 
   def show
+    @vote = Vote.find(params[:id])
+    @member = Member.find(@vote.voted_member_id)
   end
 
   def edit
