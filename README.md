@@ -2,7 +2,20 @@
 
 ## 事前準備
 
-Kajaeruのログイン機能はGithub APIのOauthを利用するため、[こちら](https://github.com/settings/applications)より、Developer applicationsに登録し、Kajaeruのための __Client ID__ と __Client Secret__ を取得してください。  
+Kajaeruのログイン機能はGithub APIのOauthを利用するため、[こちら](https://github.com/settings/applications)より、Developer applicationsに登録し、Kajaeruのための __Client ID__ と __Client Secret__ を取得してください。
+
+### 設定内容サンプル
+
+`localhost:3000`を環境に応じて変更してください。
+
+* Application name（任意）
+  * kajaeru
+* Homepage URL
+  * http://localhost:3000
+* Description
+  * ruby kaja投票アプリ
+* Authorization callback URL
+  * http://localhost:3000/auth/github/callback
 
 ## 環境構築
 
