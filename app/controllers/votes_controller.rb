@@ -12,7 +12,7 @@ class VotesController < ApplicationController
   end
 
   def create
-    vote = Vote.new(permit_param)
+    vote = Vote.new(vote_params)
     vote.voting_member_id = session[:user_id]
     begin
       vote.save!
@@ -25,7 +25,7 @@ class VotesController < ApplicationController
 
   private
 
-  def permit_param
-    param = params.require(:vote).permit(:voted_member_id, :comment)
+  def vote_params
+    params.require(:vote).permit(:voted_member_id, :comment)
   end
 end
