@@ -2,7 +2,7 @@ class VotesController < ApplicationController
   def new
     # 投票されるメンバーを取得
     @members = Member.all
-
+    @vote    = Vote.new
   end
 
   def show
@@ -10,6 +10,7 @@ class VotesController < ApplicationController
 
   def edit
     @members = Member.all
+    @vote    = Vote.find(params[:id])
   end
   
   def update 

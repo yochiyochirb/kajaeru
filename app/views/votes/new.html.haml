@@ -1,13 +1,3 @@
 %h1 Let's vote the Ruby Kaja of yochiyochirb! 
 
-= form_for :vote, url: {action: 'create'} do |f|
-  %ul
-    - @members.each_with_index do |member,i|
-      %li
-        = f.radio_button :voted_member_id, member.id, {checked: i == 0}
-        = member.nickname
-  %div
-    = f.label :comment, '推薦コメント'
-  %div
-    = f.text_area :comment
-  = f.submit '投票する'
+= render 'form'

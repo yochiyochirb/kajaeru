@@ -1,0 +1,15 @@
+= form_for(@vote) do |f|
+  -#TODO ここにエラーメッセージ表示をいれる(別 Issue )
+
+  %ul
+    - @members.each_with_index do |member,i|
+      %li
+        = f.radio_button :voted_member_id, member.id, {checked: i == 0}
+        = member.nickname
+  %div
+    = f.label :comment, '推薦コメント'
+  %div
+    = f.text_area :comment
+  -# 引数にボタンの文字列を渡さなくても、Rails が勝手に 'Update Vote' か 'Create Vote' と入れてくれるので、入れてません。
+  -# i18n 使って日本語にしたくなってきた。
+  = f.submit  
