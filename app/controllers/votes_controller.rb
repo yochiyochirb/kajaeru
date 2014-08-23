@@ -13,7 +13,7 @@ class VotesController < ApplicationController
 
   def create
     vote = Vote.new(permit_param)
-    vote[:voting_member_id] = session[:user_id]
+    vote.voting_member_id = session[:user_id]
     begin
       vote.save!
       redirect_to action:'show', id:vote.id
