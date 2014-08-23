@@ -15,8 +15,8 @@ contributors.each do |contributor|
   author = contributor['author']
   next if Member.find_by(uid: author['id'])
   member = Member.create!(
-  	nickname: author['login'], 
-  	provider: 'github', 
-  	uid: author['id'], 
-  	image: author['avatar_url'])
+    nickname: author['login'],
+    provider: 'github',
+    uid: author['id'].to_s,
+    image: author['avatar_url'])
 end
