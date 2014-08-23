@@ -1,4 +1,6 @@
 class VotesController < ApplicationController
+  # TODO: ログインしていないときは見れないようにしたい
+
   def new
     # 投票されるメンバーを取得
     @members = Member.all
