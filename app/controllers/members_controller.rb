@@ -2,6 +2,7 @@ class MembersController < ApplicationController
   before_action :redirect_to_top, unless: :signed_in? , only: %(index)
 
   def index
+    @members = Member.all
   end
 
   private

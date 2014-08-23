@@ -3,4 +3,10 @@
 
 = image_tag "yochi_rabbit.jpg", alt: "よちよち.rb", width: 500
 
+%ul
+  - @members.each do |member|
+    %li
+      = image_tag member.image, alt: member.nickname, size: '40x40'
+      %span= member.nickname
+= link_to '投票する', new_vote_path
 = link_to 'Sign out', signout_path, method: 'delete'
