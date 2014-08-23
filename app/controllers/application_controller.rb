@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    @current_user ||= Member.find(session[:user_id]) if session[:user_id]
+    Member.find(session[:user_id]) if session[:user_id]
   end
 
   def signed_in?
-    !current_user.nil?
+    !!current_user
   end
 end
