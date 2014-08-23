@@ -5,7 +5,7 @@
 %ul
   - @members.each do |member|
     %li
-      = image_tag member.image + '&s=64', alt: member.nickname
+      = image_tag member.image, alt: member.nickname, size: '40x40'
       %span= member.nickname
 %a{href: '/votes/new'}
   %button 投票する
