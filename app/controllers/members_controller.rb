@@ -7,6 +7,6 @@ class MembersController < ApplicationController
   private
 
   def redirect_to_top
-    redirect_to signin_url
+    redirect_to signin_path
   end
 end
