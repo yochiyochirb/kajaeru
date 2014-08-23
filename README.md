@@ -13,6 +13,8 @@ cp config/database.yml.sample config/database.yml
 bundle exec rake db:create
 bundle exec rake db:migrate
 
+bundle exec rails runner lib/batch/insert_to_members_from_github_contributors.rb
+
 bundle exec rails server
 ```
 
