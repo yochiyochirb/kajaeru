@@ -3,9 +3,9 @@
 Member.transaction do
   Member.delete_all
   members = [
-    { account: 'yucao',    image: 'https://pbs.twimg.com/profile_images/3233823646/8e7ca364ecae414eb509b12915458e8f_400x400.jpeg' },
-    { account: 'kitamuuu', image: 'https://pbs.twimg.com/profile_images/3233823646/8e7ca364ecae414eb509b12915458e8f_normal.jpeg' },
-    { account: 'highwide', image: 'https://avatars0.githubusercontent.com/u/2714316?v=2&s=400' }
+    { account: 'yucao',    image: 'https://avatars2.githubusercontent.com/u/1979779?v=2' },
+    { account: 'kitamuuu', image: 'https://avatars0.githubusercontent.com/u/2714316?v=2' },
+    { account: 'highwide', image: 'https://avatars1.githubusercontent.com/u/1495423?v=2' }
   ]
   members.each do |member|
     Member.create!(
