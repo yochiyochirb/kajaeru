@@ -13,13 +13,11 @@ class VotesController < ApplicationController
 
   def create
     vote = Vote.new(vote_params)
-    vote.voting_member_id = session[:user_id]
-    begin
-      vote.save!
-      redirect_to action:'show', id:vote.id
-    rescue => e
-      puts e.message
-      redirect_to action:'new'
+    vote.voting_member_id = session[:user_id] 
+    if vote.save
+      redirect_to vote, notice: 'Vote was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
