@@ -10,7 +10,7 @@ Member.transaction do
   members.each do |member|
     Member.create!(
       nickname: member[:account], 
-      provider: "github",
+      provider: 'github',
       uid: "#{member[:account]}_uid",
       image: member[:image]
     )
