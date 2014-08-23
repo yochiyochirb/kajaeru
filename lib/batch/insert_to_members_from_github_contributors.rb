@@ -5,16 +5,17 @@ res = open('https://api.github.com/repos/yochiyochirb/meetups/stats/contributors
 # res.status => ["200", "OK"]
 status, msg = res.status 
 
-if status == '200'
-  contributors = ActiveSupport::JSON.decode res.read
-  contributors.each do |contributor|
-    author = contributor['author']
-    unless Member.find_by(uid: author['id'])
-      member = Member.create!(nickname: author['login'], provider: 'github', uid: author['id'], image: author['avatar_url'])
-    else
-      puts "#{author['login']} exists already."
-    end
-  end
-else
+unless status == '200'
   puts "STATUS CODE: #{status}, MESSAGE: #{msg}"
+  exit
+end
+
+contributors = ActiveSupport::JSON.decode res.read
+contributors.each do |contributor|
+  author = contributor['author']
+  unless Member.find_by(uid: author['id'])
+    member = Member.create!(nickname: author['login'], provider: 'github', uid: author['id'], image: author['avatar_url'])
+  else
+    puts "#{author['login']} exists already."
+  end
 end
