@@ -15,5 +15,10 @@ class VotesController < ApplicationController
   end
 
   def create 
+
+  private
+
+  def vote_params
+    params.require(:member).permit(:comment, :voted_member_id)
   end
 end
