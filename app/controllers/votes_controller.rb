@@ -9,6 +9,7 @@ class VotesController < ApplicationController
   end
 
   def edit
+    @members = Member.all
   end
   
   def update 

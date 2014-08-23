@@ -1,2 +1,13 @@
-%h1 Votes#edit
-%p Find me in app/views/votes/edit.html.haml
+%h1 Let's edit!
+
+= form_for :vote, url: {action: 'update'} do |f|
+  %ul
+    - @members.each_with_index do |member,i|
+      %li
+        = f.radio_button :voted_member_id, member.id, {checked: i == 0}
+        = member.nickname
+  %div
+    = f.label :comment, '推薦コメント'
+  %div
+    = f.text_area :comment
+  = f.submit '更新する'
