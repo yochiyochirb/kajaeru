@@ -8,5 +8,8 @@
     %li
       = image_tag member.image, alt: member.nickname, size: '40x40'
       %span= member.nickname
-= link_to '投票する', new_vote_path
+- if @current_user_vote
+  = link_to 'Edit Vote', edit_vote_path(@current_user_vote)
+- else
+  = link_to 'New Vote', new_vote_path
 = link_to 'Sign out', signout_path, method: 'delete'
