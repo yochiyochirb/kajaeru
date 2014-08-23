@@ -1,12 +1,12 @@
 class MembersController < ApplicationController
-  before_action :signed_in_user, unless: :signed_in? , only: %(index)
+  before_action :redirect_to_top, unless: :signed_in? , only: %(index)
 
   def index
   end
 
   private
 
-  def signed_in_user
+  def redirect_to_top
     redirect_to signin_url
   end
 end
