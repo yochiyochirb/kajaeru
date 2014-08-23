@@ -6,5 +6,5 @@ nicknames.each do |nickname|
                 provider: "github",
                 uid: "#{nickname}_uid",
                 image: "https://pbs.twimg.com/profile_images/3233823646/8e7ca364ecae414eb509b12915458e8f_400x400.jpeg"
-               )
+                )
 end
