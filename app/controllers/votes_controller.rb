@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_action :set_member, only: %i(new edit update)
+  before_action :set_member, only: %i(new edit)
 
   def new
     @vote = Vote.new
@@ -18,6 +18,7 @@ class VotesController < ApplicationController
     if @vote.update_attributes(vote_params)
       redirect_to @vote, notice: 'Vote was successfully updated.'
     else
+      set_member
       render :edit
     end
   end
