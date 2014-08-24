@@ -1,16 +1,15 @@
 class VotesController < ApplicationController
+  before_action :set_member, only: %i(new edit)
+
   def new
-    # 投票されるメンバーを取得
-    @members = Member.all
-    @vote    = Vote.new
+    @vote = Vote.new
   end
 
   def show
   end
 
   def edit
-    @members = Member.all
-    @vote    = Vote.find(params[:id])
+    @vote = Vote.find(params[:id])
   end
   
   def update 
@@ -31,5 +30,9 @@ class VotesController < ApplicationController
 
   def vote_params
     params.require(:vote).permit(:voted_member_id, :comment)
+  end
+
+  def set_member
+    @members = Member.all
   end
 end
