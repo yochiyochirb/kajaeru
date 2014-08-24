@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   before_action :set_vote, only: :show
-  before_action :redirect_root_path, unless: :current_user_voting?, only: :show
+  before_action :redirect_root_with_alert, unless: :current_user_voting?, only: :show
 
   def new
     # 投票されるメンバーを取得
@@ -54,7 +54,7 @@ class VotesController < ApplicationController
     @vote.voting_member_id == current_user.id
   end
 
-  def redirect_root_path
+  def redirect_root_with_alert
     redirect_to root_path, alert: '他の方の投票を見る事はできません'
   end
 end
