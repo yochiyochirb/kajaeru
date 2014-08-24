@@ -1,0 +1,14 @@
+%div
+  投票したいメンバーを選んでください。
+
+= form_for(@vote) do |f|
+  %ul
+    - @members.each do |member|
+      %li
+        = f.radio_button :voted_member_id, member.id
+        = member.nickname
+  %div
+    = f.label :comment, '推薦コメント'
+  %div
+    = f.text_area :comment
+  = f.submit button_label
