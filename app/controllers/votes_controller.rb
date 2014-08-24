@@ -13,11 +13,10 @@ class VotesController < ApplicationController
   end
 
   def update
-    @vote = Vote.find_by!(id: params[:id], voting_member_id: current_user.id)
+    @vote = Vote.find(params[:id])
 
     if @vote.update_attributes(vote_params)
-      flash[:notice] = '投票を更新しました。'
-      redirect @vote
+      redirect_to @vote, notice: 'Vote was successfully updated.'
     else
       render :edit
     end
