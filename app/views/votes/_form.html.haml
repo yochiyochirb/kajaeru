@@ -4,7 +4,7 @@
   %ul
     - @members.each_with_index do |member,i|
       %li
-        = f.radio_button :voted_member_id, member.id, {checked: i == 0}
+        = f.radio_button :voted_member_id, member.id
         = member.nickname
   %div
     = f.label :comment, '推薦コメント'
