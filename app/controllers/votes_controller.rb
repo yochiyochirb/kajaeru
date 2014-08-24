@@ -14,7 +14,7 @@ class VotesController < ApplicationController
   end
 
   def update
-    @vote = current_user.votings.find(params[:id])
+    @vote = Vote.find_by!(id: params[:id], voting_member_id: current_user.id)
 
     if @vote.update_attributes(vote_params)
       flash[:notice] = '投票を更新しました。'
