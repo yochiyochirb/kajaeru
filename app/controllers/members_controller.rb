@@ -3,6 +3,7 @@ class MembersController < ApplicationController
 
   def index
     @members = Member.all
+    @current_user_vote = Vote.find_by(voting_member_id: current_user.id)
   end
 
   private
