@@ -1,3 +1,6 @@
+%div
+  投票したいメンバーを選んでください。
+
 = form_for(@vote) do |f|
   %ul
     - @members.each_with_index do |member,i|
