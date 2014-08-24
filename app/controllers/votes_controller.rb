@@ -29,7 +29,7 @@ class VotesController < ApplicationController
     if @vote.save
       redirect_to @vote, notice: 'Vote was successfully created.'
     else
-      @members = Member.all
+      set_members
       render :new
     end
   end
