@@ -3,7 +3,7 @@
 
 = form_for(@vote) do |f|
   %ul
-    - @members.each_with_index do |member,i|
+    - @members.each do |member|
       %li
         = f.radio_button :voted_member_id, member.id
         = member.nickname
