@@ -1,12 +1,13 @@
 class VotesController < ApplicationController
-  before_action :set_members, only: %i(new edit)
+  before_action :set_vote, only: :show
+  before_action :redirect_root_path, unless: :current_user_voting?, only: :show
 
   def new
-    @vote = Vote.new
+    # 投票されるメンバーを取得
+    @members = Member.all
   end
 
   def show
-    @vote = Vote.find(params[:id])
     @member = Member.find(@vote.voted_member_id)
   end
 
@@ -44,5 +45,16 @@ class VotesController < ApplicationController
 
   def set_members
     @members = Member.all
+
+  def set_vote
+    @vote = Vote.find(params[:id])
+  end
+
+  def current_user_voting?
+    @vote.voting_member_id == current_user.id
+  end
+
+  def redirect_root_path
+    redirect_to root_path, alert: '他の方の投票を見る事はできません'
   end
 end
