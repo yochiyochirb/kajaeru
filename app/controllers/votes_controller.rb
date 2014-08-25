@@ -19,7 +19,7 @@ class VotesController < ApplicationController
     @vote = Vote.find(params[:id])
 
     if @vote.update_attributes(vote_params)
-      redirect_to @vote, notice: 'Vote was successfully updated.'
+      redirect_to @vote, notice: '投票を更新しました。'
     else
       set_members
       render :edit
@@ -30,7 +30,7 @@ class VotesController < ApplicationController
     @vote = Vote.new(vote_params)
     @vote.voting_member_id = session[:user_id]
     if @vote.save
-      redirect_to @vote, notice: 'Vote was successfully created.'
+      redirect_to @vote, notice: 'ありがとうございます。投票を受け付けました。'
     else
       set_members
       render :new

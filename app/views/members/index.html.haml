@@ -2,6 +2,9 @@
 %p Hello, #{current_user.nickname}!
 
 = image_tag "yochi_rabbit.jpg", alt: "よちよち.rb", width: 500
+
+%div= notice
+
 %br
 - if @current_user_vote
   = link_to '投票を編集する', edit_vote_path(@current_user_vote)
