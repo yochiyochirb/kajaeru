@@ -1,10 +1,10 @@
 class VotesController < ApplicationController
   before_action :set_vote, only: :show
+  before_action :set_members, only: %i(new edit)
   before_action :redirect_root_with_alert, unless: :current_user_voting?, only: :show
 
   def new
-    # 投票されるメンバーを取得
-    @members = Member.all
+    @vote = Vote.new
   end
 
   def show
@@ -45,6 +45,7 @@ class VotesController < ApplicationController
 
   def set_members
     @members = Member.all
+  end
 
   def set_vote
     @vote = Vote.find(params[:id])
