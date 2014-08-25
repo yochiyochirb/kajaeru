@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: :show
+  before_action :set_vote, only: %i(edit show)
   before_action :set_members, only: %i(new edit)
-  before_action :redirect_root_with_alert, unless: :current_user_voting?, only: :show
+  before_action :redirect_root_with_alert, unless: :current_user_voting?, only: %i(edit show)
 
   def new
     @vote = Vote.new
@@ -48,7 +48,7 @@ class VotesController < ApplicationController
   end
 
   def set_vote
-    @vote = Vote.find(params[:id])
+    @vote = Vote.find(params[:id]) || Vote.new
   end
 
   def current_user_voting?
@@ -56,6 +56,6 @@ class VotesController < ApplicationController
   end
 
   def redirect_root_with_alert
-    redirect_to root_path, alert: '他の方の投票を見る事はできません'
+    redirect_to root_path, alert: '他の方の投票を見る事はできません！'
   end
 end
