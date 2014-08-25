@@ -1,5 +1,5 @@
-%h1 Vote Kaja of yochiyochirb! Kajaeru!
-%p Hello, #{current_user.nickname}!
+%h1 よちよち.rb の Ruby Kaja を選ぼう！
+%p 現在、#{current_user.nickname} としてサインインしています
 
 = image_tag "yochi_rabbit.jpg", alt: "よちよち.rb", width: 500
 
@@ -11,7 +11,7 @@
 - else
   = link_to '新しく投票する', new_vote_path
 %br
-= link_to 'Sign out', signout_path, method: 'delete'
+= link_to 'サインアウト', signout_path, method: 'delete'
 %ul
   - @members.each do |member|
     %li
