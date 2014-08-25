@@ -1,10 +1,10 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: :show
-  before_action :redirect_root_with_alert, unless: :current_user_voting?, only: :show
+  before_action :set_vote, only: %i(edit show)
+  before_action :set_members, only: %i(new edit)
+  before_action :redirect_root_with_alert, unless: :current_user_voting?, only: %i(edit show)
 
   def new
-    # 投票されるメンバーを取得
-    @members = Member.all
+    @vote = Vote.new
   end
 
   def show
@@ -19,7 +19,7 @@ class VotesController < ApplicationController
     @vote = Vote.find(params[:id])
 
     if @vote.update_attributes(vote_params)
-      redirect_to @vote, notice: 'Vote was successfully updated.'
+      redirect_to @vote, notice: '投票を更新しました。'
     else
       set_members
       render :edit
@@ -30,7 +30,7 @@ class VotesController < ApplicationController
     @vote = Vote.new(vote_params)
     @vote.voting_member_id = session[:user_id]
     if @vote.save
-      redirect_to @vote, notice: 'Vote was successfully created.'
+      redirect_to @vote, notice: 'ありがとうございます。投票を受け付けました。'
     else
       set_members
       render :new
@@ -45,9 +45,10 @@ class VotesController < ApplicationController
 
   def set_members
     @members = Member.all
+  end
 
   def set_vote
-    @vote = Vote.find(params[:id])
+    @vote = Vote.find(params[:id]) || Vote.new
   end
 
   def current_user_voting?
@@ -55,6 +56,6 @@ class VotesController < ApplicationController
   end
 
   def redirect_root_with_alert
-    redirect_to root_path, alert: '他の方の投票を見る事はできません'
+    redirect_to root_path, alert: '他の方の投票を見る事はできません！'
   end
 end
