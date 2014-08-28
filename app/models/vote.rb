@@ -3,7 +3,8 @@ class Vote < ActiveRecord::Base
   validates :voting_member_id, presence: true, uniqueness: true
 
   def self.sum_up
-    group(:voted_member_id).count(:voted_member_id).inject(Array.new) do |voute_totals, elem|
+    total_array = group(:voted_member_id).count(:voted_member_id).sort{|a,b| a[1]<=>b[1]}
+    total_array.inject(Array.new) do |voute_totals, elem|
       # elem => [5, 10]
       user_id,total = elem
       member  = Member.where(id: user_id).first
