@@ -38,7 +38,7 @@ class VotesController < ApplicationController
   end
 
   def total
-    @vote_results = Vote.sum_up
+    @vote_results = Vote.total
   end
 
   private
