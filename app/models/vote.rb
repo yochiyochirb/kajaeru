@@ -4,16 +4,16 @@ class Vote < ActiveRecord::Base
 
   def self.total
     vote_counts = group(:voted_member_id).count(:voted_member_id).sort{|a,b| a[1]<=>b[1]}
-    vote_counts.inject(Array.new) do |vote_totals, elem|
+    vote_counts.inject([]) do |vote_totals, elem|
       # elem => [5, 10]
       user_id,total = elem
       member  = Member.where(id: user_id).first
-      vote_totals.push(Hash[
+      vote_totals.push({
                       nickname: member[:nickname],
                       image:    member[:image],
                       score:    total,
                       comments: where(voted_member_id: user_id).pluck(:comment)
-                      ])
+                      })
     end
   end
 end
