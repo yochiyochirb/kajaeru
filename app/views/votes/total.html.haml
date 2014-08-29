@@ -1,16 +1,16 @@
 %h1 集計画面
 %p 現在の集計状況はこちらです！
 
-- @vote_results.each do |vote|
+- @vote_results.each do |vote_result|
   %ul
     %li
-      = image_tag vote[:image], alt: vote[:nickname], size: '40x40'
-      %span= vote[:nickname]
+      = image_tag vote_result[:image], alt: vote_result[:nickname], size: '40x40'
+      %span= vote_result[:nickname]
     %li
-      %span= vote[:score]
+      %span= vote_result[:score]
       票
     %li
       %ul
-        - vote[:comments].each do |comment|
+        - vote_result[:comments].each do |comment|
           %li
             = comment
