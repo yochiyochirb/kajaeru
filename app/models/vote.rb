@@ -11,7 +11,7 @@ class Vote < ActiveRecord::Base
       vote_totals.push({
                       nickname: member[:nickname],
                       image:    member[:image],
-                      score:    total,
+                      total:    total,
                       comments: where(voted_member_id: user_id).pluck(:comment)
                       })
     end
