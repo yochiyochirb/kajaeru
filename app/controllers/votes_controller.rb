@@ -37,6 +37,10 @@ class VotesController < ApplicationController
     end
   end
 
+  def total
+    @vote_results = Vote.total
+  end
+
   private
 
   def vote_params
