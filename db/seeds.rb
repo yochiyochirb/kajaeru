@@ -2,6 +2,7 @@
 
 Member.transaction do
   Member.delete_all
+  Member.connection.execute("delete from sqlite_sequence where name='members'")
   members = [
     { account: 'tatsuo',          uid: '44219',   image: 'https://avatars.githubusercontent.com/u/44219?v=2' },
     { account: 'ikepon',          uid: '6753644', image: 'https://avatars.githubusercontent.com/u/6753644?v=2' },
@@ -58,6 +59,7 @@ end
 
 Vote.transaction do
   Vote.delete_all
+  Vote.connection.execute("delete from sqlite_sequence where name='votes'")
   votes = [
     { voting_member_id: '20', voted_member_id: '10', comment: ('あ'..'ん').to_a.join },
     { voting_member_id: '7',  voted_member_id: '5',  comment: '!@#$%^&*()_+-=\][{}|";:/.,<>?~`' },
