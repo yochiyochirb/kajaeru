@@ -6,6 +6,7 @@
     - @members.each do |member|
       %li
         = f.radio_button :voted_member_id, member.id
+        = image_tag member.image, alt: member.nickname, size: '40x40'
         = member.nickname
   %div
     = f.label :comment, '推薦コメント(任意)'
