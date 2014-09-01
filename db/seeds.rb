@@ -2,7 +2,6 @@
 
 Member.transaction do
   Member.delete_all
-  Member.connection.execute("delete from sqlite_sequence where name='members'")
   members = [
     { account: 'tatsuo',          uid: '44219',   image: 'https://avatars.githubusercontent.com/u/44219?v=2' },
     { account: 'ikepon',          uid: '6753644', image: 'https://avatars.githubusercontent.com/u/6753644?v=2' },
@@ -59,20 +58,19 @@ end
 
 Vote.transaction do
   Vote.delete_all
-  Vote.connection.execute("delete from sqlite_sequence where name='votes'")
   votes = [
-    { voting_member_id: '20', voted_member_id: '10', comment: ('あ'..'ん').to_a.join },
-    { voting_member_id: '7',  voted_member_id: '5',  comment: '!@#$%^&*()_+-=\][{}|";:/.,<>?~`' },
-    { voting_member_id: '10', voted_member_id: '5',  comment: ('a'..'z').to_a.join },
-    { voting_member_id: '13', voted_member_id: '10', comment: (0..9).to_a.join },
-    { voting_member_id: '9',  voted_member_id: '5',  comment: '噂浬欺圭構蚕十申曾箪貼能表暴予禄兔喀媾彌拿杤歃濬畚秉綵臀藹觸軆鐔饅鷭偆砡' },
-    { voting_member_id: '31', voted_member_id: '17', comment: ('ア'..'ン').to_a.join }
+    { voting_account: 'ManabuSeki', voted_account: 'marcoball', comment: ('あ'..'ん').to_a.join },
+    { voting_account: 'maruyu0622', voted_account: 'odaillyjp', comment: '!@#$%^&*()_+-=\][{}|";:/.,<>?~`' },
+    { voting_account: 'kanpou0108', voted_account: 'odaillyjp', comment: ('a'..'z').to_a.join },
+    { voting_account: 'umekumi',    voted_account: 'marcoball', comment: (0..9).to_a.join },
+    { voting_account: 'ikepon',     voted_account: 'odaillyjp', comment: '噂浬欺圭構蚕十申曾箪貼能表暴予禄兔喀媾彌拿杤歃濬畚秉綵臀藹觸軆鐔饅鷭偆砡' },
+    { voting_account: 'axross',     voted_account: 'katorie',   comment: ('ア'..'ン').to_a.join }
   ]
   votes.each do |vote|
     Vote.create!(
-      comment:          vote[:comment],
-      voted_member_id:  vote[:voted_member_id],
-      voting_member_id: vote[:voting_member_id]
+      comment:        vote[:comment],
+      voted_member_id:  Member.find(:first, conditions: {nickname: vote[:voted_account]}).id,
+      voting_member_id: Member.find(:first, conditions: {nickname: vote[:voting_account]}).id
     )
   end
 end
