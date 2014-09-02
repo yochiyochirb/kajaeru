@@ -68,9 +68,9 @@ Vote.transaction do
   ]
   votes.each do |vote|
     Vote.create!(
-      comment:        vote[:comment],
-      voted_member_id:  Member.find(:first, conditions: {nickname: vote[:voted_account]}).id,
-      voting_member_id: Member.find(:first, conditions: {nickname: vote[:voting_account]}).id
+      comment:          vote[:comment],
+      voted_member_id:  Member.find_by(nickname: vote[:voted_account]).id,
+      voting_member_id: Member.find_by(nickname: vote[:voting_account]).id
     )
   end
 end
