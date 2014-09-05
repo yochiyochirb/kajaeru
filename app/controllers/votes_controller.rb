@@ -5,6 +5,7 @@ class VotesController < ApplicationController
 
   def new
     @vote = Vote.new
+    redirect_to members_path
   end
 
   def show
@@ -13,6 +14,7 @@ class VotesController < ApplicationController
 
   def edit
     @vote = Vote.find(params[:id])
+    redirect_to members_path
   end
 
   def update
