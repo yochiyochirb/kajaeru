@@ -13,5 +13,6 @@
       票
       %ul
         - vote_result[:comments].each do |comment|
-          %li
-            = comment
+          - if comment.present?
+            %li
+              = comment
