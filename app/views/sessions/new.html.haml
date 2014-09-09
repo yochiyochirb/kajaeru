@@ -1,6 +1,5 @@
--# すでに current_user がいた場合はコントローラで member#index に飛ばさないといけない
 - if flash[:notice]
   %p 
     = flash[:notice]
 
-= link_to 'Github でサインイン', '/auth/github',{class: 'zocial github'}
+= link_to 'Github でサインイン', '/auth/github', class: 'zocial github'
