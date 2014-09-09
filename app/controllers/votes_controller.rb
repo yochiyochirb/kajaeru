@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  before_action :redirect_to_root, except: %i(total)
   before_action :set_vote, only: %i(edit show)
   before_action :set_members, only: %i(new edit)
   before_action :redirect_root_with_alert, unless: :current_user_voting?, only: %i(edit show)
@@ -61,5 +62,9 @@ class VotesController < ApplicationController
 
   def redirect_root_with_alert
     redirect_to root_path, alert: '他の方の投票を見る事はできません！'
+  end
+
+  def redirect_to_root
+    redirect_to root_path
   end
 end

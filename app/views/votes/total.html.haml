@@ -1,5 +1,7 @@
 %h1 集計画面
-%p 現在の集計状況はこちらです！
+= link_to 'メンバー一覧に戻る', members_path
+
+%p 集計状況はこちらです！
 
 - @vote_results.each do |vote_result|
   %ul
@@ -11,5 +13,6 @@
       票
       %ul
         - vote_result[:comments].each do |comment|
-          %li
-            = comment
+          - if comment.present?
+            %li
+              = comment
