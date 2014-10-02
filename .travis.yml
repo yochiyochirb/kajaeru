@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.0.0-p451
+  - 2.0.0-p576
 before_script:
   - "cp ./config/database.yml.sample ./config/database.yml"
 notifications:
