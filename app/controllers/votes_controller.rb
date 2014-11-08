@@ -3,7 +3,7 @@ class VotesController < ApplicationController
   before_action :set_vote,       only: %i(show edit update)
 
   def new
-    redirect_to :root, alert: 'あなたは既に投票済みです。編集は以下のリンクから行ってください。' if user_voted?
+    redirect_to :root, alert: 'あなたは既に投票済みです。編集は以下のリンクから行ってください。' if Vote.user_voted?(current_user.id)
     @vote = Vote.new
   end
 
@@ -33,9 +33,5 @@ class VotesController < ApplicationController
 
   def vote_params
     params.require(:vote).permit(:candidate_id, :comment)
-  end
-
-  def user_voted?
-    Vote.where(voting_member_id: current_user.id).length != 0
   end
 end
