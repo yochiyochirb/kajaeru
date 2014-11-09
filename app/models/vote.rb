@@ -18,6 +18,6 @@ class Vote < ActiveRecord::Base
   end
 
   def self.user_voted?(user_id)
-    !!Vote.find_by(voting_member_id: user_id)
+    Vote.exists?(voting_member_id: user_id)
   end
 end
