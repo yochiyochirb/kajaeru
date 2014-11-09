@@ -3,7 +3,7 @@ class VotesController < ApplicationController
   before_action :set_vote,       only: %i(show edit update)
 
   def new
-    redirect_to :root, alert: 'あなたは既に投票済みです。編集は以下のリンクから行ってください。' if Vote.user_voted?(current_user.id)
+    redirect_to :root, alert: 'あなたは既に投票済みです。編集は以下のリンクから行ってください。' if current_user.casted_vote?
     @vote = Vote.new
   end
 
