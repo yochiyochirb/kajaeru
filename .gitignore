@@ -27,3 +27,6 @@ doc/
 
 # database settings
 /config/database.yml
+
+# Ignore application configuration
+/config/application.yml

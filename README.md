@@ -18,6 +18,7 @@ Kajaeruのログイン機能はGithub APIのOauthを利用するため、[こち
   * http://localhost:3000/auth/github/callback
 
 ## 環境構築
+1.ローカルのターミナルで以下の操作を実行してください。
 
 ```sh
 git clone https://github.com/yochiyochirb/kajaeru.git
@@ -26,16 +27,27 @@ cd kajaeru
 bundle install --path vendor/bundle
 
 cp config/database.yml.sample config/database.yml
+cp config/application.yml.sample config/application.yml
 
 bundle exec rake db:create
 bundle exec rake db:migrate
 
 bundle exec rails runner lib/batch/insert_to_members_from_github_contributors.rb
+```
 
-# ex) bash,zsh
-export GITHUB_CLIENT_ID="XXXXXXXXX"         # Kajaeru用のClient IDを設定
-export GITHUB_CLIENT_SECRET="XXXXXXXXXXXXX" # Kajaeru用のClient Secretを設定
+2.`config/database.yml` を適宜修正してください。（基本的にはなにもしなくても動くはず）
 
+3.「事前準備」で取得した __Client ID__ と __Client Secret__ を`config/application.yml`に記載してください。`your_xxx` となっているところを、取得した値に置き換えるようになります。
+
+```yml
+# examples
+GITHUB_CLIENT_ID: 'ekjfksdifjikji3wsfalsd'               # Kajaeru用のClient IDを設定
+GITHUB_CLIENT_SECRET: '23jijvc9ui3jikjkk22k49vfjdk58uv'  # Kajaeru用のClient Secretを設定
+```
+
+4.サーバを起動します。
+
+```sh
 bundle exec rails server
 ```
 
