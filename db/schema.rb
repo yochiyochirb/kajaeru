@@ -11,27 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818173520) do
+ActiveRecord::Schema.define(version: 20150307085644) do
+
+  create_table "events", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "members", force: true do |t|
     t.string   "nickname",   null: false
     t.string   "provider",   null: false
     t.string   "uid",        null: false
     t.string   "image",      null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "members", ["nickname", "uid", "image"], name: "members_unique_index", unique: true
 
-  create_table "votes", force: true do |t|
-    t.text     "comment"
-    t.integer  "voted_member_id",  null: false
-    t.integer  "voting_member_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "roles", force: true do |t|
+    t.integer  "member_id",  null: false
+    t.string   "type",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "votes", ["voting_member_id"], name: "votes_unique_index", unique: true
+  create_table "votes", force: true do |t|
+    t.text     "comment"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "voter_id",     null: false
+    t.integer  "candidate_id", null: false
+  end
 
 end

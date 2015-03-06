@@ -1,15 +1,16 @@
 %div
   投票したいメンバーを選んでください。
 
-= form_for(@vote) do |f|
+= form_for(@vote, html: {class: 'candidates'}) do |f|
   %ul
     - @members.each do |member|
       %li
-        = f.radio_button :voted_member_id, member.id
+        = f.radio_button :candidate_id, member.id
         = image_tag member.image, alt: member.nickname, size: '40x40'
-        = member.nickname
+        = f.label :candidate_id, member.nickname, value: member.id
   %div
     = f.label :comment, '推薦コメント(任意)'
   %div
-    = f.text_area :comment
+    .comment
+      = f.text_area :comment
   = f.submit button_label
