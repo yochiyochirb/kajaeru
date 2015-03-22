@@ -40,8 +40,8 @@ bundle exec rails runner lib/batch/insert_to_members_from_github_contributors.rb
 
 ```yml
 # examples
-GITHUB_CLIENT_ID: 'ekjfksdifjikji3wsfalsd'               # Kajaeru用のClient IDを設定
-GITHUB_CLIENT_SECRET: '23jijvc9ui3jikjkk22k49vfjdk58uv'  # Kajaeru用のClient Secretを設定
+GITHUB_CLIENT_ID: 'aaaaaaaaaaaaaaaaaaaaaa'               # Kajaeru用のClient IDを設定
+GITHUB_CLIENT_SECRET: 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'  # Kajaeru用のClient Secretを設定
 ```
 
 3.サーバを起動します。
