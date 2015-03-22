@@ -17,6 +17,7 @@ group :doc do
 end
 
 group :development do
+  gem 'figaro'
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
