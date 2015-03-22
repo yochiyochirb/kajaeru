@@ -23,7 +23,7 @@ Kajaeruのログイン機能はGithub APIのOauthを利用するため、[こち
 git clone https://github.com/yochiyochirb/kajaeru.git
 cd kajaeru
 
-bundle install --path vendor/bundle
+bundle install
 
 cp config/database.yml.sample config/database.yml
 
