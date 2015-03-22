@@ -27,7 +27,7 @@ cd kajaeru
 bundle install --path vendor/bundle
 
 cp config/database.yml.sample config/database.yml
-# condig/database.yml を自分の環境にあわせて適宜修正する（基本的には何もしなくても動くはず）
+# config/database.yml を自分の環境にあわせて適宜修正する（基本的には何もしなくても動くはず）
 cp config/application.yml.sample config/application.yml
 
 bundle exec rake db:create
