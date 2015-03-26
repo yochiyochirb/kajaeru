@@ -90,16 +90,6 @@ GEM
     json (1.8.2)
     jwt (1.3.0)
     kgio (2.9.3)
-<<<<<<< HEAD
-    launchy (2.4.3)
-      addressable (~> 2.3)
-    listen (2.9.0)
-      celluloid (>= 0.15.2)
-      rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
-    lumberjack (1.0.9)
-=======
->>>>>>> Extract test code to other branch
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
