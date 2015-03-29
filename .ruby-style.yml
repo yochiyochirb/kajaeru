@@ -361,6 +361,7 @@ Style/SingleLineMethods:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-single-line-methods
   Enabled: false
   AllowIfMethodIsEmpty: true
+# NOTE クオートに何を使うか
 Style/StringLiterals:
   Description: Checks if uses of quotes match the configured preference.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-string-literals
@@ -372,8 +373,8 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Description: Checks if uses of quotes inside expressions in interpolated strings
     match the configured preference.
-  Enabled: false
-  EnforcedStyle: double_quotes
+  Enabled: true
+  EnforcedStyle: single_quotes
   SupportedStyles:
   - single_quotes
   - double_quotes
