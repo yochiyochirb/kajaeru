@@ -129,6 +129,7 @@ Style/EmptyLineBetweenDefs:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#empty-lines-between-methods
   Enabled: true
   AllowAdjacentOneLineDefs: false
+# NOTE ブロックの do の直前直後に空行を入れるべきかどうか
 Style/EmptyLinesAroundBlockBody:
   Description: Keeps track of empty lines around block bodies.
   Enabled: true
@@ -706,6 +707,7 @@ Style/EmptyElse:
 Style/EmptyLines:
   Description: Don't use several empty lines in a row.
   Enabled: true
+# `private` などのアクセス修飾子の前後に空行を入れるべきかどうか
 Style/EmptyLinesAroundAccessModifier:
   Description: Keep blank lines around access modifiers.
   Enabled: true
