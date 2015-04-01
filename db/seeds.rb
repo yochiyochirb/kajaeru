@@ -2,12 +2,10 @@
 module ActiveRecord
   class Base
     def self.reset_pk_sequence
-      begin
-        update_seq_sql = "update sqlite_sequence set seq = 0 where name = '#{table_name}';"
-        ActiveRecord::Base.connection.execute(update_seq_sql)
-      rescue => e
-        puts e.message
-      end
+      update_seq_sql = "update sqlite_sequence set seq = 0 where name = '#{table_name}';"
+      ActiveRecord::Base.connection.execute(update_seq_sql)
+    rescue => e
+      puts e.message
     end
   end
 end
