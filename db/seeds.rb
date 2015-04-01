@@ -41,7 +41,6 @@ Member.transaction do
         klass.create!(member_id: member.id, type: "#{klass}")
       end
   end
-
 end
 
 #Vote.transaction do
