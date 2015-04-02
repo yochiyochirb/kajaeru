@@ -1,21 +1,10 @@
-# seed を作成するたびに ID をリセットする必要があるため。initializer から読ませたいところ。
-module ActiveRecord
-  class Base
-    def self.reset_pk_sequence
-      update_seq_sql = "update sqlite_sequence set seq = 0 where name = '#{table_name}';"
-      ActiveRecord::Base.connection.execute(update_seq_sql)
-    rescue => e
-      puts e.message
-    end
-  end
-end
-
 # add seed data of members
+# TODO FactoryGirl 使うようになったら、これぜんぶ factory にして、
+#      FactoryGirl.create(:member)
+#      みたいにインスタンスを作るコードが書いてある rake タスクを作りたいなー。
 
 Member.transaction do
   Member.delete_all
-  Member.reset_pk_sequence
-
   members = [
     { account: 'alice',   uid: '11111', image: 'https://avatars.githubusercontent.com/u/44219?v=2' },
     { account: 'bob',     uid: '22222', image: 'https://avatars.githubusercontent.com/u/6753644?v=2' },
