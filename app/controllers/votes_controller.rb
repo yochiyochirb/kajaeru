@@ -16,6 +16,10 @@ class VotesController < ApplicationController
     redirect_to @vote
   end
 
+  def total
+    @vote_results = Vote.total
+  end
+
   private
 
   def set_members
