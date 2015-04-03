@@ -8,9 +8,7 @@
     = csrf_meta_tags
 
   %body
-    %nav.navbar.navbar-fixed-top.navbar-default
-      %div.container
-        %div.navbar-header
-          %div.navbar-brand
-            = link_to 'Kajaeru', root_path
-    = yield
+    = render 'layouts/header'
+    %div.container
+      = yield
+    = render 'layouts/footer'
