@@ -72,8 +72,10 @@ linters:
     enabled: true
     include_nested: false
     max_properties: 10
+# NOTE 冗長な書き方になってしまうこともあるので false にしたけど、
+#      CSS 詳しくないので実際はあったほうがいいのかも。。
   PropertySortOrder:
-    enabled: true
+    enabled: false
     ignore_unspecified: false
     severity: warning
     separate_groups: false
