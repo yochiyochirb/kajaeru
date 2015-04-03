@@ -8,6 +8,7 @@ html {
 body {
   // Margin bottom by footer height
   margin-bottom: 60px;
+
   .container {
     padding: 60px 15px 0;
   }
@@ -20,6 +21,7 @@ body {
   // Set the fixed height of the footer here.
   height: 60px;
   background-color: $light-gray;
+
   .container {
     padding-right: 15px;
     padding-left: 15px;
