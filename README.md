@@ -1,7 +1,7 @@
-# Kajaeru [![Build Status](https://travis-ci.org/yochiyochirb/kajaeru.svg?branch=master)](https://travis-ci.org/yochiyochirb/kajaeru)
+# Kajaeru [![Build Status](https://travis-ci.org/yochiyochirb/kajaeru.svg?branch=master)](https://travis-ci.org/yochiyochirb/kajaeru) [![Code Climate](https://codeclimate.com/github/yochiyochirb/kajaeru/badges/gpa.svg)](https://codeclimate.com/github/yochiyochirb/kajaeru)
 
 ## What is Kajaeru?
-Kajaeru is a web-based voting application to elect Ruby Kaja. ( "eru(選る)" is to select someone or something from among several in Japanese. )
+Kajaeru is a web-based voting application to elect Ruby Kaja. ( "eru(選る)" is Japanese to select someone or something from among several. )
 
 About Ruby Kaja, see the [web page](http://kaja.rubyist.net/) for more information.
 
