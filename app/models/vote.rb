@@ -1,9 +1,9 @@
 class Vote < ActiveRecord::Base
-  validates :voted_member_id,  presence: true
-  validates :voting_member_id, presence: true, uniqueness: true
+  # validates :voted_member_id,  presence: true
+  # validates :voting_member_id, presence: true, uniqueness: true
 
   def self.total
-    vote_counts_and_users = group(:voted_member_id).count(:voted_member_id).sort{|a,b| b[1]<=>a[1]}
+    vote_counts_and_users = group(:candidate_id).count(:voter_id).sort {|a, b| b[1] <=> a[1] }
     vote_counts_and_users.inject([]) do |vote_totals, vote_count_and_user|
       # vote_count_and_user => [5, 10]
       user_id,total = vote_count_and_user
@@ -12,8 +12,11 @@ class Vote < ActiveRecord::Base
                       nickname: member[:nickname],
                       image:    member[:image],
                       total:    total,
-                      comments: where(voted_member_id: user_id).pluck(:comment)
+                      comments: where(candidate_id: user_id).pluck(:comment)
                       })
     end
   end
+
+  belongs_to :candidate, class_name: 'Member'
+  belongs_to :voter, class_name: 'Member'
 end

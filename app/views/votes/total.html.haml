@@ -1,6 +1,8 @@
 %h1 集計画面
 %p 現在の集計状況はこちらです！
 
+- # NOTE vote_result は、Vote の情報と member の情報がほしい。
+- # { image: 'http://...', nickname: 'foo', total: 123, comments: [ 'so good!', 'nice' ] }
 - @vote_results.each do |vote_result|
   %ul
     %li

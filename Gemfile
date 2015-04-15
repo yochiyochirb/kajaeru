@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.0.0', patchlevel: '576'
 
-gem 'pry-rails'
 gem 'rails', '4.0.3'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
@@ -24,10 +23,12 @@ group :development do
   gem 'sqlite3'
 end
 
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'pry'
-  gem 'pry-nav'
+group :test do
+  group :development do
+    gem 'rspec-rails'
+    gem 'pry-rails'
+    gem 'pry-nav'
+  end
 end
 
 group :production do

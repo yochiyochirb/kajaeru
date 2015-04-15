@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user
   helper_method :signed_in?
@@ -8,7 +6,17 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    Member.find(session[:user_id]) if session[:user_id]
+    return nil unless session[:user_id]
+
+    # NOTE 操作するリソースによって current_user の意味が変わるのはやめたほうがいいかも
+    #      しれないような気がするが、具体的に「これは困りそう」といったケースが思い浮かばず、
+    #      他のモデルやコントローラでの操作時にこのほうが自然な実装にできる気がしたので、
+    #      こうして分岐させた。
+    case controller_name
+    when 'votes', 'members'
+      Voter.find_by(member_id: session[:user_id])
+    #when '結果'
+    end
   end
 
   def signed_in?

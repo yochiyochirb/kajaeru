@@ -1,9 +1,9 @@
 class MembersController < ApplicationController
+  # XXX これフィルタのままでいい？アクションに入れた方がいい？
   before_action :redirect_to_top, unless: :signed_in? , only: %(index)
 
   def index
     @members = Member.all
-    @current_user_vote = Vote.find_by(voting_member_id: current_user.id)
   end
 
   private

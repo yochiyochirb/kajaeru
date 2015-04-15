@@ -14,7 +14,7 @@ contributors = ActiveSupport::JSON.decode res.read
 contributors.each do |contributor|
   author = contributor['author']
   next if Member.find_by(uid: author['id'].to_s)
-  member = Member.create!(
+  Member.create!(
     nickname: author['login'],
     provider: 'github',
     uid: author['id'].to_s,
