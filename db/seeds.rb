@@ -6,11 +6,11 @@
 Member.transaction do
   Member.delete_all
   members = [
-    { account: 'alice',   uid: '11111', image: 'https://avatars.githubusercontent.com/u/44219?v=2' },
-    { account: 'bob',     uid: '22222', image: 'https://avatars.githubusercontent.com/u/6753644?v=2' },
-    { account: 'charlie', uid: '33333', image: 'https://avatars.githubusercontent.com/u/807273?v=2' },
-    { account: 'john',    uid: '44444', image: 'https://avatars.githubusercontent.com/u/2962567?v=2' },
-    { account: 'doe',     uid: '55555', image: 'https://avatars.githubusercontent.com/u/1832831?v=2' },
+    { account: 'alice',   uid: '11111', image: 'http://pic.prepics-cdn.com/9ece34e247cc4/54052408.jpeg' },
+    { account: 'bob',     uid: '22222', image: 'http://pic.prepics-cdn.com/9ece34e247cc4/54052407.jpeg' },
+    { account: 'charlie', uid: '33333', image: 'http://pic.prepics-cdn.com/9ece34e247cc4/54052406.jpeg' },
+    { account: 'john',    uid: '44444', image: 'http://pic.prepics-cdn.com/aee2982c9f207/53480916.jpeg' },
+    { account: 'doe',     uid: '55555', image: 'http://pic.prepics-cdn.com/aee2982c9f207/53480915.jpeg' },
   ]
 
   members.each do |member|
