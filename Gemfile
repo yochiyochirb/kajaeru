@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.0.0', patchlevel: '576'
 
 gem 'rails', '4.0.3'
 gem 'sass-rails', '~> 4.0.0'
