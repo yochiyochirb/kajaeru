@@ -24,7 +24,6 @@ end
       end
 
 Member.transaction do
-  Member.delete_all
   members = [
     { account: 'alice',   uid: '11111', image: 'http://pic.prepics-cdn.com/9ece34e247cc4/54052408.jpeg' },
     { account: 'bob',     uid: '22222', image: 'http://pic.prepics-cdn.com/9ece34e247cc4/54052407.jpeg' },
