@@ -25,7 +25,7 @@ Member.transaction do
   Member.all.map do |member|
     %w(candidate voter).map {|klass| klass.classify.constantize }
       .each do |klass|
-        klass.create!(member_id: member.id, type: "#{klass}")
+        klass.create!(member_id: member.id)
       end
   end
 end
