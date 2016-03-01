@@ -21,9 +21,9 @@ end
 
 #truncate するのではなくdelete_allしてプライマリーキーだけ戻すようにする
 %w(member role).map { |klass| klass.classify.constantize }
-      .each do |klass|
-        reset_table(klass)
-      end
+.each do |klass|
+  reset_table(klass)
+end
 
 Member.transaction do
   members = [
