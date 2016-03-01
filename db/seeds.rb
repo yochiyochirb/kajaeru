@@ -8,8 +8,7 @@ def reset_table(model)
 
   case ActiveRecord::Base.connection.adapter_name
   when 'SQLite'
-    new_max = model.maximum(model.primary_key) || 0
-    update_seq_sql = "update sqlite_sequence set seq = #{new_max} where name = '#{table_name}';"
+    update_seq_sql = "update sqlite_sequence set seq = 0 where name = '#{table_name}';"
 
     ActiveRecord::Base.connection.execute(update_seq_sql)
   when 'PostgreSQL'
