@@ -15,7 +15,7 @@ def reset_table(model)
   when 'PostgreSQL'
     ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
   else
-    raise "Only SQLite and PostgreSQL can be reset."
+    raise 'Only SQLite and PostgreSQL can be reset.'
   end
 end
 
