@@ -19,7 +19,7 @@ def reset_table(model)
   end
 end
 
-#truncate するのではなくdelete_allしてプライマリーキーだけ戻すようにする
+# NOTE truncate するのではなくdelete_allしてプライマリーキーだけ戻すようにする
 %w(member role).map { |klass| klass.classify.constantize }
                .each do |klass|
                  reset_table(klass)
