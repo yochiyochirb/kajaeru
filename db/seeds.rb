@@ -2,9 +2,26 @@
 # TODO FactoryGirl 使うようになったら、これぜんぶ factory にして、
 #      FactoryGirl.create(:member)
 #      みたいにインスタンスを作るコードが書いてある rake タスクを作りたいなー。
+def reset_table(model)
+  model.delete_all
+  table_name = model.table_name
+
+  case ActiveRecord::Base.connection.adapter_name
+  when 'SQLite'
+    update_seq_sql = "update sqlite_sequence set seq = 0 where name = '#{table_name}';"
+
+    ActiveRecord::Base.connection.execute(update_seq_sql)
+  when 'PostgreSQL'
+    ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
+  else
+    raise 'Only SQLite and PostgreSQL can be reset.'
+  end
+end
 
 Member.transaction do
-  Member.delete_all
+  # NOTE truncate するのではなくdelete_allしてプライマリーキーだけ戻すようにする
+  [Member, Role].each { |klass| reset_table(klass) }
+
   members = [
     { account: 'alice',   uid: '11111', image: 'http://pic.prepics-cdn.com/9ece34e247cc4/54052408.jpeg' },
     { account: 'bob',     uid: '22222', image: 'http://pic.prepics-cdn.com/9ece34e247cc4/54052407.jpeg' },
