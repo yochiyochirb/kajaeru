@@ -19,7 +19,13 @@ def reset_table(model)
 end
 
 # NOTE truncate するのではなくdelete_allしてプライマリーキーだけ戻すようにする
-[Member, Role].each { |klass| reset_table(klass) }
+begin
+  ActiveRecord::Base.transaction do
+    [Member, Role].each { |klass| reset_table(klass) }
+  end
+rescue => e
+  raise 'Only SQLite and PostgreSQL can be reset.'
+end
 
 Member.transaction do
   members = [
