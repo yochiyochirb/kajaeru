@@ -23,7 +23,7 @@ begin
   ActiveRecord::Base.transaction do
     [Member, Role].each { |klass| reset_table(klass) }
   end
-rescue => e
+rescue
   raise 'Only SQLite and PostgreSQL can be reset.'
 end
 
