@@ -21,6 +21,7 @@ end
 Member.transaction do
   # NOTE truncate するのではなくdelete_allしてプライマリーキーだけ戻すようにする
   [Member, Role].each { |klass| reset_table(klass) }
+
   members = [
     { account: 'alice',   uid: '11111', image: 'http://pic.prepics-cdn.com/9ece34e247cc4/54052408.jpeg' },
     { account: 'bob',     uid: '22222', image: 'http://pic.prepics-cdn.com/9ece34e247cc4/54052407.jpeg' },
