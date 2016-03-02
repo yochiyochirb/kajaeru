@@ -18,8 +18,8 @@ def reset_table(model)
   end
 end
 
-# NOTE truncate するのではなくdelete_allしてプライマリーキーだけ戻すようにする
 Member.transaction do
+  # NOTE truncate するのではなくdelete_allしてプライマリーキーだけ戻すようにする
   [Member, Role].each { |klass| reset_table(klass) }
   members = [
     { account: 'alice',   uid: '11111', image: 'http://pic.prepics-cdn.com/9ece34e247cc4/54052408.jpeg' },
