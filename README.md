@@ -5,7 +5,22 @@ Kajaeru is a web-based voting application to elect Ruby Kaja. ( "eru(選る)" is
 
 About Ruby Kaja, see the [web page](http://kaja.rubyist.net/) for more information.
 
-## How to join
+## Usage
+
+Before using Kajaeru you need to register Kajaeru, that is an OAuth application, in [GitHub Account Settings Menu](https://github.com/settings/developers).
+
+At the "Register a new OAuth application" window, type the texts below:
+
+- Application name
+  - Kajaeru (or other name you can recognize)
+- Homepage URL
+  - URL of your application
+- Description
+  - A voting application for Ruby Kaja
+- Authorization callback URL
+  - #{your_applicaton_url}/auth/github/callback
+
+## Contribution
 Only Yochiyochi.rb members can join and send PRs to this project.
 
 If you are a Yochiyochi.rb member and want to improve Kajaeru with us, please read [wiki(Japanese)](https://github.com/yochiyochirb/kajaeru/wiki) at first.
