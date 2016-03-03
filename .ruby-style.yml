@@ -116,11 +116,12 @@ Style/CommentAnnotation:
   - OPTIMIZE
   - HACK
   - REVIEW
+# NOTE メソッドチェーンの途中で改行するとき、ドットをどこに置くか
 Style/DotPosition:
   Description: Checks the position of the dot in multi-line method calls.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains
   Enabled: true
-  EnforcedStyle: trailing
+  EnforcedStyle: leading
   SupportedStyles:
   - leading
   - trailing
