@@ -2,7 +2,7 @@
   "name": "kajaeru",
   "description": "",
   "scripts": {
-    "postdeploy": "cp ./config/database.yml.sample ./config/database.yml && bundle exec rake db:migrate db:seed"
+    "postdeploy": "bundle exec rake db:migrate db:seed"
   },
   "env": {
     "GITHUB_CLIENT_ID": {
