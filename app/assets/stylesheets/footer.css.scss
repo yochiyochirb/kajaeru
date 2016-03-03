@@ -8,10 +8,6 @@ html {
 body {
   // Margin bottom by footer height
   margin-bottom: 60px;
-
-  .container {
-    padding: 60px 15px 0;
-  }
 }
 
 .footer {
@@ -23,8 +19,7 @@ body {
   background-color: $light-gray;
 
   .container {
-    padding-right: 15px;
-    padding-left: 15px;
+    padding: 60px 15px 0;
   }
 }
 
