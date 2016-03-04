@@ -28,7 +28,13 @@ group :development do
     gem 'pry-nav'
     gem 'pry-rails'
     gem 'rspec-rails'
+    gem 'cucumber-rails', require: false
   end
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'launchy'
 end
 
 group :production do
