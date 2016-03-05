@@ -8,7 +8,7 @@ end
   table.hashes.each do |row|
     target = row.fetch('投票対象')
     comment = row.fetch('コメント', 'sample comment')
-   
+
     choose target
     fill_in '推薦コメント(任意)', with: comment
     click_button '投票する'
