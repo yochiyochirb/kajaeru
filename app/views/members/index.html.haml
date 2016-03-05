@@ -6,7 +6,7 @@
 
 %div= alert
 
-%div
+.vote-link
   - if current_user.vote
     = link_to '投票を編集する', edit_vote_path(current_user.vote)
   - else

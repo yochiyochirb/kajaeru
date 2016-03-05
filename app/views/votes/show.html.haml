@@ -1,4 +1,5 @@
-%h1= vote_show_title
+.page-title
+  %h1= vote_show_title
 
 %div= notice
 
@@ -8,5 +9,3 @@
 %div
   推薦コメント
   = @vote.comment
-%div= link_to 'メンバー一覧', members_path
-%div= link_to '編集', edit_vote_path(@vote)

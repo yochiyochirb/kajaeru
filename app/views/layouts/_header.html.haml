@@ -1,0 +1,22 @@
+%header.navbar.navbar-fixed-top.navbar-default
+  .container
+    .navbar-header
+    .collapse.navbar-collapse#navbar
+      .navbar-brand
+        = link_to 'Kajaeru', root_path
+      - if signed_in?
+        %ul.nav.navbar-nav
+          %li.active
+            = link_to 'ホーム', root_path
+          %li
+            - if current_user.vote
+              = link_to '編集する',edit_vote_path(current_user.vote)
+            - else
+              = link_to '投票する', new_vote_path
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            = image_tag(current_user.member.image, alt: 'icon')
+          %li
+            = link_to current_user.member.nickname, '#'
+          %li
+            = link_to 'サインアウト', signout_path, method: 'delete'
