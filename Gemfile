@@ -22,19 +22,19 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'figaro'
+  gem 'listen', '~> 3.0.5'
   gem 'quiet_assets'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'sqlite3'
+  gem 'web-console', '~> 3.0'
 
   group :test do
     gem 'byebug'
     gem 'cucumber-rails', require: false
-    gem 'listen', '~> 3.0.5'
     gem 'pry-byebug'
     gem 'pry-rails'
     gem 'rspec-rails'
-    gem 'spring'
-    gem 'spring-watcher-listen', '~> 2.0.0'
-    gem 'web-console', '~> 3.0'
   end
 end
 
