@@ -13,13 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20150307085644) do
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "members", force: true do |t|
+  create_table "members", force: :cascade do |t|
     t.string   "nickname",   null: false
     t.string   "provider",   null: false
     t.string   "uid",        null: false
@@ -30,14 +30,14 @@ ActiveRecord::Schema.define(version: 20150307085644) do
 
   add_index "members", ["nickname", "uid", "image"], name: "members_unique_index", unique: true
 
-  create_table "roles", force: true do |t|
+  create_table "roles", force: :cascade do |t|
     t.integer  "member_id",  null: false
     t.string   "type",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "votes", force: true do |t|
+  create_table "votes", force: :cascade do |t|
     t.text     "comment"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
