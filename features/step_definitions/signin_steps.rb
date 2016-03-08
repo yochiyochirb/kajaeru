@@ -1,11 +1,13 @@
 前提(/^GitHub アカウント "([^"]*)" でログインしている$/) do |account|
+  member = Member.find_by(nickname: account)
+
   OmniAuth.config.test_mode = true
 
   OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
-    provider: 'github',
-    uid: '11111',
+    provider: member.provider,
+    uid: member.uid,
     info: {
-      nickname: account
+      nickname: member.nickname
     }
   )
 
