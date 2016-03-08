@@ -35,6 +35,7 @@ group :development do
     gem 'pry-byebug'
     gem 'pry-rails'
     gem 'rspec-rails'
+    gem 'therubyracer'
   end
 end
 
