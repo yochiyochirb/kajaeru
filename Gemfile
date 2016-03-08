@@ -42,6 +42,7 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'pg'
 end
 
 group :production do
