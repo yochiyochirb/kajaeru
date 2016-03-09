@@ -55,3 +55,41 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
+
+# To load fixtures and also enable fixture helper method
+# from https://github.com/cucumber/cucumber/wiki/Fixtures
+module FixtureAccess
+  def self.extended(base)
+    ActiveRecord::FixtureSet.reset_cache
+    fixtures_folder = File.join(Rails.root, 'features', 'fixtures')
+
+    fixtures = Dir[File.join(fixtures_folder, '*.yml')].map do |f|
+      File.basename(f, '.yml')
+    end
+
+    ActiveRecord::FixtureSet.create_fixtures(fixtures_folder, fixtures)
+
+    (class << base; self; end).class_eval do
+      @@fixture_cache = {}
+      fixtures.each do |table_name|
+        table_name = table_name.to_s.tr('.', '_')
+        define_method(table_name) do |*fixture_symbols|
+          @@fixture_cache[table_name] ||= {}
+
+          instances = fixture_symbols.map do |fixture_symbol|
+            if fix = ActiveRecord::FixtureSet.cached_fixtures(ActiveRecord::Base.connection, table_name)
+                                             .first
+                                             .fixtures[fixture_symbol.to_s]
+              @@fixture_cache[table_name][fixture_symbol] ||= fix.find
+            else
+              raise StandardError, "Fixture #{fixture_symbol} not found for table #{table_name}"
+            end
+          end
+          instances.size == 1 ? instances.first : instances
+        end
+      end
+    end
+  end
+end
+
+World(FixtureAccess)
