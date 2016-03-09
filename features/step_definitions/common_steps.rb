@@ -2,8 +2,8 @@
   binding.pry
 end
 
-ならば(/^"([^"]*)" というリンクが表示されていること$/) do |link|
-  within '.vote-link' do
+ならば(/^ヘッダーに"([^"]*)" というリンクが表示されていること$/) do |link|
+  within '.navbar-header' do
     expect(page).to have_link link
   end
 end

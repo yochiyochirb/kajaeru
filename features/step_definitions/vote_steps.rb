@@ -1,5 +1,5 @@
 もし(/^投票ページを表示する$/) do
-  within '.vote-link' do
+  within '.container' do
     all('a').first.click
   end
 end
