@@ -1,0 +1,39 @@
+alice_candidate:
+  type: Candidate
+  member: alice
+
+alice_voter:
+  type: Voter
+  member: alice
+
+bob_candidate:
+  type: Candidate
+  member: bob
+
+bob_voter:
+  type: Voter
+  member: bob
+
+charlie_candidate:
+  type: Candidate
+  member: charlie
+
+charlie_voter:
+  type: Voter
+  member: charlie
+
+john_candidate:
+  type: Candidate
+  member: john
+
+john_voter:
+  type: Voter
+  member: john
+
+doe_candidate:
+  type: Candidate
+  member: doe
+
+doe_voter:
+  type: Voter
+  member: doe
