@@ -21,6 +21,13 @@ build:
   # Read more about steps on our dev center:
   # http://devcenter.wercker.com/docs/steps/index.html
   steps:
+    # NOTE JS runtimeとしてNode.jsをインストール
+    - script:
+        name: install JavaScript Runtime(Node.js)
+        code: |
+          sudo apt-get update
+          sudo apt-get install -y nodejs
+
     # NOTE この設定をしないと wercker での bundle install 時に失敗する
     #      https://github.com/wercker/support/issues/161
     - script:
