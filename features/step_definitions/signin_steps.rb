@@ -1,5 +1,5 @@
 前提(/^GitHub アカウント "([^"]*)" でログインしている$/) do |account|
-  member = Member.find_by(nickname: account)
+  member = Member.find_by!(nickname: account)
 
   OmniAuth.config.test_mode = true
 
