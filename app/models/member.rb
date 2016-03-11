@@ -7,8 +7,4 @@ class Member < ActiveRecord::Base
   has_many :roles
   # XXX なんだろう以下のコード、あってるんだろうか？
   # has_many :candidate, -> { roles.where(_type: 'Candidate') }
-
-  def casted_vote?
-    Vote.exists?(voter: self)
-  end
 end
