@@ -9,6 +9,6 @@ class Member < ActiveRecord::Base
   # has_many :candidate, -> { roles.where(_type: 'Candidate') }
 
   def casted_vote?
-    Vote.exists?(voting_member_id: id)
+    Vote.exists?(voter: self)
   end
 end
