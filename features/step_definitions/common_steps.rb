@@ -3,9 +3,7 @@
 end
 
 ならば(/^"([^"]*)" というリンクが表示されていること$/) do |link|
-  within '.vote-link' do
-    expect(page).to have_link link
-  end
+  expect(page).to have_link link
 end
 
 もし(/^Kajaeru にアクセスする$/) do

@@ -1,18 +1,8 @@
 %h1 よちよち.rb の Ruby Kaja を選ぼう！
--# XXX なんか関連がきもちわるいような、、、
-%p 現在、#{current_user.member.nickname} としてサインインしています
 
 = image_tag "yochi_rabbit.jpg", alt: "よちよち.rb", width: 500
 
 %div= alert
-
-.vote-link
-  - if current_user.vote
-    = link_to '投票を編集する', edit_vote_path(current_user.vote)
-  - else
-    = link_to '新しく投票する', new_vote_path
-
-%div= link_to 'サインアウト', signout_path, method: 'delete'
 
 %h2 メンバー一覧
 

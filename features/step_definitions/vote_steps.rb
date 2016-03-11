@@ -1,7 +1,5 @@
 もし(/^投票ページを表示する$/) do
-  within '.vote-link' do
-    all('a').first.click
-  end
+  click_on '投票する'
 end
 
 もし(/^以下の内容で新規投票する:$/) do |table|
