@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_action :set_members, only: %i(new edit)
+  before_action :set_candidates, only: %i(new edit)
   before_action :set_vote,    only: %i(show edit update)
 
   def new
@@ -7,7 +7,7 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Vote.create!(vote_params.merge(voter_id: current_user.id))
+    @vote = Vote.create!(vote_params.merge(voter_id: current_user.as_voter.id))
     redirect_to @vote
   end
 
@@ -22,8 +22,8 @@ class VotesController < ApplicationController
 
   private
 
-  def set_members
-    @members = Member.all
+  def set_candidates
+    @candidates = Candidate.all
   end
 
   def set_vote

@@ -7,4 +7,12 @@ class Member < ActiveRecord::Base
   has_many :roles
   # XXX なんだろう以下のコード、あってるんだろうか？
   # has_many :candidate, -> { roles.where(_type: 'Candidate') }
+
+  def as_voter
+    Voter.find_by(member_id: id)
+  end
+
+  def as_candidate
+    Candidate.find_by(member_id: id)
+  end
 end

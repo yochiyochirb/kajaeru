@@ -17,6 +17,6 @@ class Vote < ActiveRecord::Base
     end
   end
 
-  belongs_to :candidate, class_name: 'Member'
-  belongs_to :voter, class_name: 'Member'
+  belongs_to :candidate
+  belongs_to :voter
 end
