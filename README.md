@@ -5,6 +5,38 @@ Kajaeru is a web-based voting application to elect Ruby Kaja. ( "eru(選る)" is
 
 About Ruby Kaja, see the [web page](http://kaja.rubyist.net/) for more information.
 
+## Development
+
+### Setup
+
+```
+# clone this repository
+git clone git@github.com:yochiyochirb/kajaeru.git
+cd kajaeru
+
+# install gem
+bundle install --without production
+
+# migration
+cp config/database.yml.sample config/database.yml
+bin/rails db:create db:migrate db:seed
+
+# start
+bin/rails server
+```
+
+Open your browser and access http://localhost:3000 .
+
+### Test
+
+```sh
+# unit test
+bin/rake test
+
+# cucumber
+bin/rails cucumber
+```
+
 ## How to join
 Only Yochiyochi.rb members can join and send PRs to this project.
 
