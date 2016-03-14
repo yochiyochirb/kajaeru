@@ -1,6 +1,9 @@
 .row
   .col-md-12
     投票したいメンバーを選んでください。
+    - if flash[:alert]
+      %p
+        = flash[:alert]
 
     = form_for(@vote, html: {class: 'candidates'}) do |f|
       %ul
