@@ -32,6 +32,8 @@ group :development do
   group :test do
     gem 'byebug'
     gem 'cucumber-rails', require: false
+    gem 'minitest'
+    gem 'minitest-reporters'
     gem 'pry-byebug'
     gem 'pry-rails'
     gem 'rspec-rails'
