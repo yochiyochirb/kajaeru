@@ -6,8 +6,8 @@
     - @candidates.each do |candidate|
       %li
         = f.radio_button :candidate_id, candidate.id
-        = image_tag candidate.member.image, alt: candidate.member.nickname, size: '40x40'
-        = f.label :candidate_id, candidate.member.nickname, value: candidate.member.id
+        = image_tag candidate.image, alt: candidate.nickname, size: '40x40'
+        = f.label :candidate_id, candidate.nickname, value: candidate.id
   %div
     = f.label :comment, '推薦コメント(任意)'
   %div
