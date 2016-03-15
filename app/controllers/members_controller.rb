@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   # XXX これフィルタのままでいい？アクションに入れた方がいい？
-  before_action :redirect_to_top, unless: :signed_in? , only: %(index)
+  before_action :redirect_to_top, unless: :signed_in? , only: %i(index)
 
   def index
     @members = Member.all
