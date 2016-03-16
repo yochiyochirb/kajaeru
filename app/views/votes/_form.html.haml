@@ -1,16 +1,17 @@
-%div
-  投票したいメンバーを選んでください。
+.row
+  .col-md-12
+    投票したいメンバーを選んでください。
 
-= form_for(@vote, html: {class: 'candidates'}) do |f|
-  %ul
-    - @members.each do |member|
-      %li
-        = f.radio_button :candidate_id, member.id
-        = image_tag member.image, alt: member.nickname, size: '40x40'
-        = f.label :candidate_id, member.nickname, value: member.id
-  %div
-    = f.label :comment, '推薦コメント(任意)'
-  %div
-    .comment
-      = f.text_area :comment
-  = f.submit button_label
+    = form_for(@vote, html: {class: 'candidates'}) do |f|
+      %ul
+        - @members.each do |member|
+          %li.radio
+            = f.radio_button :candidate_id, member.id
+            = image_tag member.image, alt: member.nickname, size: '20x20', class: 'img-rounded'
+            = f.label :candidate_id, member.nickname, value: member.id
+      .form-group
+        = f.label :comment, '推薦コメント(任意)', class: 'control-label'
+        .comment
+          = f.text_area :comment, class: 'form-control', rows: 3
+      .form-group
+        = f.submit button_label, class: 'btn btn-default'

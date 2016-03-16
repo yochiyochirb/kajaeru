@@ -1,9 +1,14 @@
 %header.navbar.navbar-fixed-top.navbar-default
   .container
     .navbar-header
-    .collapse.navbar-collapse#navbar
+      %button.navbar-toggle.collapsed{type:'button', data:{toggle:'collapse', target:'#navbar'}, aria:{expanded:'false'}}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
       .navbar-brand
         = link_to 'Kajaeru', root_path
+    .collapse.navbar-collapse#navbar
       - if signed_in?
         %ul.nav.navbar-nav
           %li.active
