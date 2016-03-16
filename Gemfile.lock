@@ -221,6 +221,10 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
     ruby_parser (3.8.1)
       sexp_processor (~> 4.1)
     sass (3.4.22)
@@ -297,6 +301,7 @@ DEPENDENCIES
   quiet_assets
   rails (>= 5.0.0.beta3, < 5.1)
   rails_12factor
+  rspec-expectations
   sass-rails (~> 5.0)
   sdoc
   spring
