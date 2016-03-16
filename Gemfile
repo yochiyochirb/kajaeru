@@ -41,10 +41,13 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'launchy'
+
+  group :production do
+    gem 'pg'
+  end
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
