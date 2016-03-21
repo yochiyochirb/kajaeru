@@ -1,4 +1,6 @@
 class Vote < ActiveRecord::Base
+  belongs_to :candidate
+  belongs_to :voter
 
   def self.total
     vote_counts_and_users = group(:candidate_id).count(:voter_id).sort {|a, b| b[1] <=> a[1] }
@@ -14,7 +16,4 @@ class Vote < ActiveRecord::Base
                       })
     end
   end
-
-  belongs_to :candidate, class_name: 'Member'
-  belongs_to :voter, class_name: 'Member'
 end

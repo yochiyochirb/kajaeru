@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
-  before_action :set_members, only: %i(new edit)
-  before_action :set_vote,    only: %i(show edit update)
+  before_action :set_candidates, only: %i(new edit)
+  before_action :set_vote,       only: %i(show edit update)
 
   def new
     @vote = Vote.new
@@ -22,8 +22,8 @@ class VotesController < ApplicationController
 
   private
 
-  def set_members
-    @members = Member.all
+  def set_candidates
+    @candidates = Candidate.all
   end
 
   def set_vote
