@@ -142,6 +142,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
+    minitest-stub_any_instance (1.0.1)
     multi_json (1.11.2)
     multi_test (0.1.2)
     multi_xml (0.5.5)
@@ -303,6 +304,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   minitest
   minitest-reporters
+  minitest-stub_any_instance
   omniauth-github
   pg
   pry-byebug
