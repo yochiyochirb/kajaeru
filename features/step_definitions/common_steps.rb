@@ -17,3 +17,9 @@ end
 もし(/^ホームにアクセスする$/) do
   click_link 'ホーム'
 end
+
+ならば(/^投票対象者一覧が表示されていること$/) do
+  Member.all.map(&:nickname).each do |nickname|
+    expect(page).to have_content nickname
+  end
+end

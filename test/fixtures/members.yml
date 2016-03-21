@@ -1,0 +1,32 @@
+DEFAULTS: &DEFAULTS
+  provider: github
+
+alice:
+  <<: *DEFAULTS
+  nickname: alice
+  uid: 11111
+  image: http://pic.prepics-cdn.com/9ece34e247cc4/54052408.jpeg
+
+bob:
+  <<: *DEFAULTS
+  nickname: bob
+  uid: 22222
+  image: http://pic.prepics-cdn.com/9ece34e247cc4/54052407.jpeg
+
+charlie:
+  <<: *DEFAULTS
+  nickname: charlie
+  uid: 33333
+  image: http://pic.prepics-cdn.com/9ece34e247cc4/54052406.jpeg
+
+john:
+  <<: *DEFAULTS
+  nickname: john
+  uid: 44444
+  image: http://pic.prepics-cdn.com/aee2982c9f207/53480916.jpeg
+
+doe:
+  <<: *DEFAULTS
+  nickname: doe
+  uid: 55555
+  image: http://pic.prepics-cdn.com/aee2982c9f207/53480915.jpegkkk

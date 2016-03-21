@@ -49,3 +49,7 @@ build:
     - script:
         name: cucumber features
         code: bundle exec cucumber
+
+    - script:
+        name: Minitest
+        code: bin/rake test

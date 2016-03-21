@@ -4,11 +4,11 @@
 
     = form_for(@vote, html: {class: 'candidates'}) do |f|
       %ul
-        - @members.each do |member|
+        - @candidates.each do |candidate|
           %li.radio
-            = f.radio_button :candidate_id, member.id
-            = image_tag member.image, alt: member.nickname, size: '20x20', class: 'img-rounded'
-            = f.label :candidate_id, member.nickname, value: member.id
+            = f.radio_button :candidate_id, candidate.id
+            = image_tag candidate.member.image, alt: candidate.member.nickname, size: '20x20', class: 'img-rounded'
+            = f.label :candidate_id, candidate.member.nickname, value: candidate.id
       .form-group
         = f.label :comment, '推薦コメント(任意)', class: 'control-label'
         .comment
