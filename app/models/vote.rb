@@ -1,6 +1,4 @@
 class Vote < ActiveRecord::Base
-  # validates :voted_member_id,  presence: true
-  # validates :voting_member_id, presence: true, uniqueness: true
 
   def self.total
     vote_counts_and_users = group(:candidate_id).count(:voter_id).sort {|a, b| b[1] <=> a[1] }
