@@ -5,6 +5,43 @@ Kajaeru is a web-based voting application to elect Ruby Kaja. ( "eru(選る)" is
 
 About Ruby Kaja, see the [web page](http://kaja.rubyist.net/) for more information.
 
+## Usage
+
+Kajaeru runs on heroku.
+
+```
+# clone this repository
+git clone git@github.com:yochiyochirb/kajaeru.git
+cd kajaeru
+
+# create heroku app for kajaeru
+heroku create
+git push heroku master
+
+# run migration
+heroku run rake db:migrate
+
+# set environment variable
+heroku config:set GITHUB_CLIENT_ID=XXXXX
+heroku config:set GITHUB_CLIENT_SECRET=XXXXX
+
+# open browser
+heroku open
+```
+
+Before using Kajaeru you need to register Kajaeru, that is an OAuth application, in [GitHub Account Settings Menu](https://github.com/settings/developers).
+
+At the "Register a new OAuth application" window, type the texts below:
+
+- Application name
+  - Kajaeru (or other name you can recognize)
+- Homepage URL
+  - URL of your application
+- Description
+  - A voting application for Ruby Kaja
+- Authorization callback URL
+  - #{your_applicaton_url}/auth/github/callback
+
 ## Development
 
 ### Setup
