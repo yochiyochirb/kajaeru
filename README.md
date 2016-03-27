@@ -37,7 +37,7 @@ bin/rake test
 bin/rails cucumber
 ```
 
-## How to join
+## Contribution
 Only Yochiyochi.rb members can join and send PRs to this project.
 
 If you are a Yochiyochi.rb member and want to improve Kajaeru with us, please read [wiki(Japanese)](https://github.com/yochiyochirb/kajaeru/wiki) at first.
