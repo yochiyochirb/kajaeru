@@ -18,3 +18,9 @@ end
     expect(page).to have_content '投票完了画面'
   end
 end
+
+ならば(/^投票対象者に "([^"]*)" がいないこと$/) do |account|
+  within '.candidates' do
+    expect(page).not_to have_content account
+  end
+end
