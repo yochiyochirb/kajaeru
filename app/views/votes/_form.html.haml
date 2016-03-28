@@ -2,7 +2,6 @@
   .col-md-12
     投票したいメンバーを選んでください。
 
-    - binding.pry
     = form_for(@vote, html: {class: 'candidates'}) do |f|
       %ul
         - @candidates.each do |candidate|
