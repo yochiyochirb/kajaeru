@@ -3,4 +3,10 @@ class MypagesController < ApplicationController
 
   def show
   end
+
+  private
+
+  def redirect_to_top
+    redirect_to signin_path
+  end
 end
