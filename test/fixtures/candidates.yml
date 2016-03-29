@@ -4,19 +4,34 @@ DEFAULTS: &DEFAULTS
 alice_candidate:
   <<: *DEFAULTS
   member: alice
+  event: senbatsu_election
 
 bob_candidate:
   <<: *DEFAULTS
   member: bob
+  event: senbatsu_election
 
 charlie_candidate:
   <<: *DEFAULTS
   member: charlie
+  event: senbatsu_election
 
 john_candidate:
   <<: *DEFAULTS
   member: john
+  event: senbatsu_election
 
 doe_candidate:
   <<: *DEFAULTS
   member: doe
+  event: senbatsu_election
+
+muddy_candidate:
+  <<: *DEFAULTS
+  member: muddy
+  event: us_presidential_election
+
+robert_candidate:
+  <<: *DEFAULTS
+  member: robert
+  event: us_presidential_election

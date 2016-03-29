@@ -1,0 +1,8 @@
+DEFAULTS: &DEFAULTS
+  name: $LABEL
+
+senbatsu_election:
+  <<: *DEFAULTS
+
+us_presidential_election:
+  <<: *DEFAULTS
