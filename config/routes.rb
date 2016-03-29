@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#callback'
   get '/signin'                  => 'sessions#new'
   delete '/signout'              => 'sessions#destroy'
+
+  resource :mypage, only: :show do
+    resource :vote, only: :show, controller: 'mypage/vote'
+  end
 end
