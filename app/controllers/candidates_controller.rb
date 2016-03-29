@@ -2,6 +2,6 @@ class CandidatesController < ApplicationController
   include RolesCommonConcerns
 
   def index
-    @candidates = Candidate.all
+    @candidates = @event.candidates.all
   end
 end
