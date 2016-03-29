@@ -15,13 +15,13 @@
             = link_to 'ホーム', root_path
           %li
             - if current_user.voter&.vote
-              = link_to '編集する',edit_vote_path(current_user.voter.vote)
+              = link_to '編集する', edit_vote_path(current_user.voter.vote)
             - else
               = link_to '投票する', new_vote_path
-        %ul.nav.navbar-nav.navbar-right
-          %li
+        %ul.nav.navbar-nav.navbar-right.current-user
+          %li.current-user__image
             = image_tag(current_user.image, alt: 'icon')
-          %li
-            = link_to current_user.nickname, '#'
+          %li.current-user__mypage-link
+            = link_to current_user.nickname, mypage_path
           %li
             = link_to 'サインアウト', signout_path, method: 'delete'
