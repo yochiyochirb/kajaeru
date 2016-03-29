@@ -1,13 +1,10 @@
-もし(/^マイページへアクセスする$/) do
+もし(/^マイページで投票内容を確認する$/) do
   within '.current-user__mypage-link' do
     find('a').click
   end
-end
 
-もし(/^投票内容を確認する$/) do
   click_on '投票した内容を確認する'
 end
-
 
 前提(/^以下の内容で投票が済んでいる:$/) do |table|
   table.hashes.each do |row|
