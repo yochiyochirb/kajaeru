@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'members#index'
   get 'votes/total'
   resources :votes, except: %i(index destroy)
-  resources :events, only: %(index)
+  resources :events, only: %i(index show)
 
   get '/auth/:provider/callback' => 'sessions#callback'
   get '/signin'                  => 'sessions#new'

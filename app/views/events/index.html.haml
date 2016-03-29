@@ -6,4 +6,4 @@
   - @events.each do |event|
     %tr
       %td
-        = event.name
+        = link_to event.name, event_path(event)
