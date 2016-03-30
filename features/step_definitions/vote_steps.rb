@@ -1,3 +1,13 @@
+前提(/^"([^"]*)" が投票する権限を持っている$/) do |member|
+  subject = Member.find_by!(nickname: member).voter?
+  expect(subject).to be_truthy
+end
+
+前提(/^"([^"]*)" が投票する権限を持っていない$/) do |member|
+  subject = Member.find_by!(nickname: member).voter?
+  expect(subject).to be_falsey
+end
+
 もし(/^投票ページを表示する$/) do
   click_on '投票する'
 end
