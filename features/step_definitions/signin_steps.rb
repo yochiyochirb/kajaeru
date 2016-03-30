@@ -29,3 +29,15 @@ end
 ならば(/^サインインページが表示されていること$/) do
   expect(current_path).to eq signin_path
 end
+
+前提(/^以下のメンバーがログインしている:$/) do |table|
+  table.hashes.each do |row|
+    nickname = row.fetch('ニックネーム')
+    vote_permission = row.fetch('投票権限', 'あり')
+    expect(vote_permission).to be_in(%w(あり なし))
+
+    step %(GitHub アカウント "#{nickname}" でログインしている)
+
+    Member.find_by!(nickname: nickname).voters.each(&:destroy) if vote_permission == 'なし'
+  end
+end
