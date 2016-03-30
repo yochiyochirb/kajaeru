@@ -1,7 +1,8 @@
 class VotesController < ApplicationController
-  before_action :require_empty_vote, only: %i(new)
-  before_action :set_candidates,     only: %i(new edit)
-  before_action :set_vote,           only: %i(show edit update)
+  before_action :require_to_be_voter, except: :total
+  before_action :require_empty_vote,  only: %i(new)
+  before_action :set_candidates,      only: %i(new edit)
+  before_action :set_vote,            only: %i(show edit update)
 
   def new
     @vote = Vote.new
@@ -29,6 +30,10 @@ class VotesController < ApplicationController
 
   def set_vote
     @vote = Vote.find(params[:id])
+  end
+
+  def require_to_be_voter
+    redirect_to root_path, alert: '投票する権限がありません' unless current_user.voter?
   end
 
   def require_empty_vote
