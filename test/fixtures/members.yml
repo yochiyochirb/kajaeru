@@ -25,4 +25,4 @@ john:
 doe:
   <<: *DEFAULTS
   uid: 55555
-  image: http://pic.prepics-cdn.com/aee2982c9f207/53480915.jpegkkk
+  image: http://pic.prepics-cdn.com/aee2982c9f207/53480915.jpeg
