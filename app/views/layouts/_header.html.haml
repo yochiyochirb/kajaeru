@@ -14,8 +14,8 @@
           %li.active
             = link_to 'ホーム', root_path
           %li
-            - if current_user.voter? && current_user.as_voter.vote
-              = link_to '編集する',edit_vote_path(current_user.as_voter.vote)
+            - if current_user.voter&.vote
+              = link_to '編集する',edit_vote_path(current_user.voter.vote)
             - else
               = link_to '投票する', new_vote_path
         %ul.nav.navbar-nav.navbar-right

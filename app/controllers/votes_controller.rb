@@ -9,7 +9,7 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Vote.create!(vote_params.merge(voter_id: current_user.as_voter.id))
+    @vote = Vote.create!(vote_params.merge(voter_id: current_user.voter.id))
     redirect_to @vote
   end
 
@@ -33,7 +33,7 @@ class VotesController < ApplicationController
   end
 
   def require_to_be_voter
-    redirect_to root_path, alert: '投票する権限がありません' unless current_user.voter?
+    redirect_to root_path, alert: '投票する権限がありません' unless current_user.voter
   end
 
   def require_empty_vote
