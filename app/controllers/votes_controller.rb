@@ -8,7 +8,7 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Vote.create!(vote_params.merge(voter_id: current_user.id))
+    @vote = Vote.create!(vote_params.merge(voter_id: current_user.as_voter.id))
     redirect_to @vote
   end
 
