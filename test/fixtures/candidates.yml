@@ -1,0 +1,22 @@
+DEFAULTS: &DEFAULTS
+  type: Candidate
+
+alice_candidate:
+  <<: *DEFAULTS
+  member: alice
+
+bob_candidate:
+  <<: *DEFAULTS
+  member: bob
+
+charlie_candidate:
+  <<: *DEFAULTS
+  member: charlie
+
+john_candidate:
+  <<: *DEFAULTS
+  member: john
+
+doe_candidate:
+  <<: *DEFAULTS
+  member: doe

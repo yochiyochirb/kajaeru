@@ -1,0 +1,22 @@
+DEFAULTS: &DEFAULTS
+  type: Voter
+
+alice_voter:
+  <<: *DEFAULTS
+  member: alice
+
+bob_voter:
+  <<: *DEFAULTS
+  member: bob
+
+charlie_voter:
+  <<: *DEFAULTS
+  member: charlie
+
+john_voter:
+  <<: *DEFAULTS
+  member: john
+
+doe_voter:
+  <<: *DEFAULTS
+  member: doe
