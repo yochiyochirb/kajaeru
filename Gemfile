@@ -28,26 +28,26 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'sqlite3'
   gem 'web-console', '~> 3.0'
+end
 
-  group :test do
-    gem 'byebug'
-    gem 'cucumber-rails', require: false
-    gem 'minitest'
-    gem 'minitest-reporters'
-    gem 'minitest-stub_any_instance'
-    gem 'pry-byebug'
-    gem 'pry-rails'
-    gem 'rspec-rails'
-  end
+group :development, :test do
+  gem 'byebug'
+  gem 'cucumber-rails', require: false
+  gem 'minitest'
+  gem 'minitest-reporters'
+  gem 'minitest-stub_any_instance'
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :test do
   gem 'database_cleaner'
   gem 'launchy'
+end
 
-  group :production do
-    gem 'pg'
-  end
+group :test, :production do
+  gem 'pg'
 end
 
 group :production do
