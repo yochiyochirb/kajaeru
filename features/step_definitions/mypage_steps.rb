@@ -1,7 +1,5 @@
 もし(/^マイページで投票内容を確認する$/) do
-  within '.current-user__mypage-link' do
-    find('a').click
-  end
+  find('.current-user__mypage-link').click
 
   click_on '投票した内容を確認する'
 end

@@ -19,9 +19,9 @@
             - else
               = link_to '投票する', new_vote_path
         %ul.nav.navbar-nav.navbar-right.current-user
-          %li.current-user__image
-            = image_tag(current_user.image, alt: 'icon')
-          %li.current-user__mypage-link
-            = link_to current_user.nickname, mypage_path
+          %li
+            = image_tag(current_user.image, alt: 'icon', class: 'current-user__image')
+          %li
+            = link_to current_user.nickname, mypage_path, class: 'current-user__mypage-link'
           %li
             = link_to 'サインアウト', signout_path, method: 'delete'
