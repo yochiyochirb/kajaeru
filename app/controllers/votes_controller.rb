@@ -78,6 +78,6 @@ class VotesController < ApplicationController
 
   def check_if_already_voted
     redirect_to event_path(@event),
-                alert: 'すでにこのイベントには投票済みです' if current_user.voted?
+                alert: 'すでにこのイベントには投票済みです' if current_user.voted_for?(@event)
   end
 end
