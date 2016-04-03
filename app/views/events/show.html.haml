@@ -5,6 +5,7 @@
 
 %div
   %ul
-    %li Total
+    %li= link_to 'Vote', new_event_vote_path(@event)
+    %li= link_to 'Total Votes', event_votes_total_path(@event)
     %li= link_to 'List of candidates', event_candidates_path(@event)
     %li= link_to 'List of voters', event_voters_path(@event)

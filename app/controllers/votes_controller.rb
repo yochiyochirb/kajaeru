@@ -1,16 +1,23 @@
 class VotesController < ApplicationController
   before_action :require_to_be_voter, except: :total
   before_action :require_empty_vote,  only: %i(new)
-  before_action :set_candidates,      only: %i(new edit)
+  before_action :set_event,           only: %i(new create total)
+  before_action :set_candidates,      only: %i(new create edit)
+  before_action :set_voter,           only: %i(new create)
   before_action :set_vote,            only: %i(show edit update)
 
   def new
-    @vote = Vote.new
+    @vote = @voter.votes.build
   end
 
   def create
-    @vote = Vote.create!(vote_params.merge(voter_id: current_user.voter.id))
-    redirect_to @vote
+    @vote = @voter.votes.build(vote_params)
+
+    if @vote.save
+      redirect_to @vote
+    else
+      render :new
+    end
   end
 
   def update
@@ -24,8 +31,17 @@ class VotesController < ApplicationController
 
   private
 
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
+
   def set_candidates
-    @candidates = Candidate.where.not(member_id: current_user.id)
+    @candidates = Candidate.for_this_event(@event)
+                           .where.not(member_id: current_user.member.id)
+  end
+
+  def set_voter
+    @voter = current_user
   end
 
   def set_vote
