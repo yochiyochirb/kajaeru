@@ -1,0 +1,6 @@
+.message-area
+  - alert_message = flash[:alert]
+  - if alert_message
+    .alert.alert-danger
+      %span.sr-only Error:
+      .message= alert_message
