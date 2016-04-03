@@ -1,3 +1,3 @@
 class Voter < Role
-  has_many :votes
+  has_one :vote
 end
