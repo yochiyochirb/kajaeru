@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   resources :members, only: %i(index)
   root 'members#index'
 
-  resources :events, only: %i(index show) do
-    resources :candidates, shallow: true, only: %i(index)
-    resources :voters, shallow: true, only: %i(index)
-    resources :votes, shallow: true, except: %i(index destroy)
+  resources :events, shallow: true, only: %i(index show) do
+    resources :candidates, only: %i(index)
+    resources :voters, only: %i(index)
+    resources :votes, except: %i(index destroy)
     get 'votes/total'
   end
 
