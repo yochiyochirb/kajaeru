@@ -26,7 +26,7 @@ class VotesController < ApplicationController
   end
 
   def total
-    @vote_results = Vote.total
+    @vote_results = Vote.total(Vote.for_this_event(@event))
   end
 
   private
