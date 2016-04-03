@@ -1,5 +1,7 @@
 class VotesController < ApplicationController
+  before_action :set_event, only: %i(new create total)
   before_action :require_to_be_voter, except: :total
+  before_action :voting_right?,       except: :total
   before_action :require_empty_vote,  only: %i(new)
   before_action :set_event,           only: %i(new create total)
   before_action :set_candidates,      only: %i(new create edit)
@@ -59,5 +61,17 @@ class VotesController < ApplicationController
 
   def vote_params
     params.require(:vote).permit(:candidate_id, :comment)
+  end
+
+  def voting_right?
+    unless current_user
+      redirect_to root_path, alert: '投票する権限がありません'
+      return
+    end
+
+    unless current_user.id.in?(@event.voters.pluck(:id))
+      redirect_to event_path(@event), alert: 'このイベントに投票する権限がありません'
+      return
+    end
   end
 end
