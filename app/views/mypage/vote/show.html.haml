@@ -2,7 +2,7 @@
   あなたの投票内容
 
 .my-vote
-  - if current_user.vote
+  - if @my_vote
     .my-vote__candidate-nickname
       投票したメンバー
       = @my_vote.candidate.member.nickname
