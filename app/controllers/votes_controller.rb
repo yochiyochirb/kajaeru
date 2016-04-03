@@ -25,7 +25,7 @@ class VotesController < ApplicationController
   private
 
   def set_candidates
-    @candidates = Candidate.where.not(member_id: current_user.member.id)
+    @candidates = Candidate.where.not(member_id: current_user.id)
   end
 
   def set_vote
