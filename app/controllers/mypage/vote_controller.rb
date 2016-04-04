@@ -2,7 +2,7 @@ class Mypage::VoteController < ApplicationController
   before_action :redirect_to_top, unless: :signed_in?, only: :show
 
   def show
-    @my_vote = current_user.vote
+    @my_vote = current_user.voter.vote
   end
 
   private
