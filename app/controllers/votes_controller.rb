@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
+  before_action :require_empty_vote, only: %i(new)
   before_action :set_candidates,     only: %i(new edit)
   before_action :set_vote,           only: %i(show edit update)
-  before_action :require_empty_vote, only: %i(new)
 
   def new
     @vote = Vote.new
