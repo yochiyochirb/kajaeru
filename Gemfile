@@ -38,7 +38,7 @@ group :development, :test do
   gem 'minitest-stub_any_instance'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'rspec-rails'
+  gem 'rspec-expectations'
 end
 
 group :test do
