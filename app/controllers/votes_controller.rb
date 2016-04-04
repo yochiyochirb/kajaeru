@@ -37,7 +37,8 @@ class VotesController < ApplicationController
   end
 
   def require_empty_vote
-    redirect_to edit_vote_path(current_user.vote), alert: 'あなたは既に投票済みです。' if current_user.vote
+    redirect_to edit_vote_path(current_user.voter.vote),
+                alert: 'あなたは既に投票済みです。' if current_user.voter.vote
   end
 
   def vote_params
