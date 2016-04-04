@@ -1,13 +1,10 @@
 class VotesController < ApplicationController
-  before_action :set_candidates, only: %i(new edit)
-  before_action :set_vote,       only: %i(show edit update)
+  before_action :set_candidates,     only: %i(new edit)
+  before_action :set_vote,           only: %i(show edit update)
+  before_action :require_empty_vote, only: %i(new)
 
   def new
-    if current_user.vote
-      redirect_to edit_vote_path(current_user.vote), alert: 'あなたは既に投票済みです。'
-    else
-      @vote = Vote.new
-    end
+    @vote = Vote.new
   end
 
   def create
@@ -32,6 +29,10 @@ class VotesController < ApplicationController
 
   def set_vote
     @vote = Vote.find(params[:id])
+  end
+
+  def require_empty_vote
+    redirect_to edit_vote_path(current_user.vote), alert: 'あなたは既に投票済みです。' if current_user.vote
   end
 
   def vote_params
