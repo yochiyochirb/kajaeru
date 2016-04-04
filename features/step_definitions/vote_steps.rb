@@ -36,7 +36,7 @@ end
 #     「自分以外の画面にも行けるというオプションがあるのか」と思われてしまいそう
 ならば(/^"([^"]*)" の投票編集画面に遷移すること$/) do |nickname|
   member = Member.find_by(nickname: nickname)
-  my_vote = member.roles.find_by(type: 'Voter').vote
+  my_vote = member.voter.vote
 
   expect(page).to have_current_path(edit_vote_path(my_vote))
 end
