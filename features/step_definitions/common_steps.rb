@@ -23,3 +23,7 @@ end
     expect(page).to have_content nickname
   end
 end
+
+ならば(/^"([^"]*)" というメッセージが表示されていること$/) do |message|
+  expect(page).to have_content(message)
+end
