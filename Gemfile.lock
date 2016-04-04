@@ -43,12 +43,6 @@ GEM
     arel (7.0.0)
     autoprefixer-rails (6.3.5)
       execjs
-    better_errors (2.1.1)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
-      rack (>= 0.9.0)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -278,8 +272,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  better_errors
-  binding_of_caller
   bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
