@@ -2,10 +2,12 @@
   click_on '投票する'
 end
 
-もし(/^以下の内容で新規投票する:$/) do |table|
+もし(/^以下の内容で新規投票(?:する|している):$/) do |table|
   table.hashes.each do |row|
     target = row.fetch('投票対象')
     comment = row.fetch('コメント', 'sample comment')
+
+    click_on '投票する'
 
     choose target
     fill_in '推薦コメント(任意)', with: comment
