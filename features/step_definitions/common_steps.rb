@@ -25,7 +25,9 @@ end
 end
 
 ならば(/^"([^"]*)" というメッセージが表示されていること$/) do |message|
-  expect(page).to have_content(message)
+  within '.alert .message' do
+    expect(page).to have_content(message)
+  end
 end
 
 ならば(/^まだ投票していないのがわかること$/) do
