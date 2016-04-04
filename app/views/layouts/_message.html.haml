@@ -1,5 +1,6 @@
 .message-area
-  - alert_message = flash[:alert]
-  - if alert_message
-    .alert.alert-danger
-      .message= alert_message
+  - messages = flash.to_hash.slice(*%w(notice alert))
+  - if messages.any?
+    - messages.each do |flash_type, message|
+      .alert(class="#{bootstrap_alert_class(flash_type)}")
+        .message= message
