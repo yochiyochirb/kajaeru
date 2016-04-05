@@ -37,3 +37,18 @@ end
 ならば(/^サインインページに遷移すること$/) do
   expect(page).to have_current_path(signin_path)
 end
+
+もし(/^"([^"]*)" の投票詳細ページに直接アクセスする$/) do |nickname|
+  vote_of_others = Member.find_by(nickname: nickname).voter.vote
+  visit vote_path(vote_of_others.id)
+end
+
+もし(/^"([^"]*)" の投票編集ページに直接アクセスする$/) do |nickname|
+  vote_of_others = Member.find_by(nickname: nickname).voter.vote
+  visit edit_vote_path(vote_of_others.id)
+end
+
+ならば(/^該当ページが見つからないこと$/) do
+  # TODO 404 ページに出る文言を have_content しているかで確認する
+  #expect(page).to have_content('foobar')
+end
