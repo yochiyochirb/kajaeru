@@ -62,6 +62,5 @@ end
 end
 
 もし(/^サインアウトする$/) do
-  # XXX CSS class で絞り込みたい
-  click_on 'サインアウト'
+  find('.current-user__signout-link').click
 end
