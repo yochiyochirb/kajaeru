@@ -23,7 +23,7 @@ linters:
     enabled: true
 
   HtmlAttributes:
-    enabled: true
+    enabled: false
 
   ImplicitDiv:
     enabled: true
