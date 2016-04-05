@@ -1,10 +1,9 @@
 class VotesController < ApplicationController
   before_action :set_event,              only: %i(new create total)
   before_action :require_to_be_voter,    except: :total
-  before_action :voting_right?,          except: %i(show total)
+  before_action :voting_right?,          except: %i(show edit total)
   before_action :check_if_already_voted, only: %i(new create)
   before_action :require_empty_vote,     only: %i(new)
-  before_action :set_event,              only: %i(new create total)
   before_action :set_candidates,         only: %i(new create edit)
   before_action :set_voter,              only: %i(new create)
   before_action :set_vote,               only: %i(show edit update)
@@ -40,11 +39,11 @@ class VotesController < ApplicationController
 
   def set_candidates
     @candidates = Candidate.for_this_event(@event)
-                           .where.not(member_id: current_user.member.id)
+                           .where.not(member_id: current_user.id)
   end
 
   def set_voter
-    @voter = current_user
+    @voter = current_user.voter
   end
 
   def set_vote
@@ -65,12 +64,7 @@ class VotesController < ApplicationController
   end
 
   def voting_right?
-    unless current_user
-      redirect_to root_path, alert: '投票する権限がありません'
-      return
-    end
-
-    unless current_user.id.in?(@event.voters.pluck(:id))
+    unless current_user.voter.id.in?(@event.voters.pluck(:id))
       redirect_to event_path(@event), alert: 'このイベントに投票する権限がありません'
       return
     end
@@ -78,6 +72,6 @@ class VotesController < ApplicationController
 
   def check_if_already_voted
     redirect_to event_path(@event),
-                alert: 'すでにこのイベントには投票済みです' if current_user.voted_for?(@event)
+                alert: 'すでにこのイベントには投票済みです' if current_user.voter.voted_for?(@event)
   end
 end

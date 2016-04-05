@@ -6,8 +6,8 @@
 %div
   %ul
     %li
-      - if current_user.voted_for?(@event)
-        = link_to 'Edit Vote', edit_vote_path(current_user.vote)
+      - if current_user.voter.voted_for?(@event)
+        = link_to 'Edit Vote', edit_vote_path(current_user.voter.vote)
       - else
         = link_to 'Vote', new_event_vote_path(@event)
     %li= link_to 'Total Votes', event_votes_total_path(@event)
