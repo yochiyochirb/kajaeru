@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_action :set_event,              only: %i(new create total)
+  before_action :set_event
   before_action :require_to_be_voter,    except: :total
   before_action :voting_right?,          except: %i(show edit total)
   before_action :check_if_already_voted, only: %i(new create)
@@ -16,7 +16,7 @@ class VotesController < ApplicationController
     @vote = @voter.build_vote(vote_params)
 
     if @vote.save
-      redirect_to @vote
+      redirect_to event_vote_path(@event, @vote)
     else
       render :new
     end
@@ -24,7 +24,7 @@ class VotesController < ApplicationController
 
   def update
     @vote.update!(vote_params)
-    redirect_to @vote
+    redirect_to event_vote_path(@event, @vote)
   end
 
   def total

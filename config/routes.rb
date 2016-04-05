@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   resources :members, only: %i(index)
   root 'members#index'
 
-  resources :events, shallow: true, only: %i(index show) do
+  resources :events, only: %i(index show) do
     resources :candidates, only: %i(index)
     resources :voters, only: %i(index)
-    resources :votes, except: %i(index destroy)
-    get 'votes/total'
+    resources :votes, except: %i(index destroy) do
+      get 'total', on: :collection
+    end
   end
 
   get '/auth/:provider/callback' => 'sessions#callback'
