@@ -30,8 +30,7 @@ end
   expect(current_path).to eq signin_path
 end
 
-# 投票権限があるかないかにフォーカスした step だということがわかるように書いたほうがよいかも
-前提(/^以下のメンバーがログインしている:$/) do |table|
+前提(/^以下の投票権限のメンバーがログインしている:$/) do |table|
   table.hashes.each do |row|
     nickname = row.fetch('ニックネーム')
     vote_permission = row.fetch('投票権限', 'あり')
