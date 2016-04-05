@@ -51,4 +51,5 @@ end
 ならば(/^該当ページが見つからないこと$/) do
   # TODO 404 ページに出る文言を have_content しているかで確認する
   #expect(page).to have_content('foobar')
+  pending
 end
