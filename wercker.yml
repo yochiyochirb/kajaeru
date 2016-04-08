@@ -66,5 +66,5 @@ build:
           if [ "${BUNDLE_UPDATE}" ] ; then
             gem update bundler --no-document
             gem install wercker-bundle-update-pr
-            wercker-bundle-update-pr yucao24hours satoimo.to.imo@gmail.com
+            wercker-bundle-update-pr yucao24hours-bot satoimo.to.imo+bot@gmail.com
           fi
