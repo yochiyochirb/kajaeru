@@ -66,5 +66,5 @@ build:
           if [ "${BUNDLE_UPDATE}" ] ; then
             gem update bundler --no-document
             gem install wercker-bundle-update-pr
-            wercker-bundle-update-pr <username> <email>
+            wercker-bundle-update-pr yucao24hours satoimo.to.imo@gmail.com
           fi
