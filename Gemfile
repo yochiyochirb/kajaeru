@@ -28,8 +28,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'sqlite3'
   gem 'web-console', '~> 3.0'
-  gem 'gakubuchi'
-  gem 'slim-rails'
 end
 
 group :development, :test do
