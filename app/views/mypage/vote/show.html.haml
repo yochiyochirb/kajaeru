@@ -16,6 +16,9 @@
         .my-vote__comment
           推薦コメント
           = my_vote.candidate.member.nickname
-      - else
+      - elsif EventPolicy.new(current_user, event).votable?
         .my-vote__information
           まだ投票していません
+      - else
+        .my-vote__information
+          このイベントには投票できません
