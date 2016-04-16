@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
-  before_action :set_event
+  include EventSetter
+
   before_action :set_voter
   before_action :require_to_be_voter,    except: :total
   before_action :check_if_already_voted, only: %i(new create)
@@ -34,10 +35,6 @@ class VotesController < ApplicationController
   end
 
   private
-
-  def set_event
-    @event = Event.find(params[:event_id])
-  end
 
   def set_candidates
     @candidates = Candidate.for_this_event(@event)

@@ -1,5 +1,5 @@
 class VotersController < ApplicationController
-  include RolesCommonConcerns
+  include EventSetter
 
   def index
     @voters = @event.candidates.all

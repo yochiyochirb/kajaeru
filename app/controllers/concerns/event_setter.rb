@@ -1,7 +1,6 @@
-concern :RolesCommonConcerns do
-
+concern :EventSetter do
   included do
-    before_action :set_event, only: %i(index)
+    before_action :set_event
 
     private
 
