@@ -29,7 +29,7 @@ class VotesController < ApplicationController
   end
 
   def set_vote
-    @vote = Vote.find(params[:id])
+    @vote = policy_scope(Vote.find(params[:id]))
   end
 
   def require_to_be_voter

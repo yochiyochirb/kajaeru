@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
   helper_method :signed_in?
   before_action :require_to_signin
 
+  rescue_from Pundit::NotAuthorizedError, with: :render_404
+
+  def render_404(exeption = nil)
+    if exeption
+      render file: File.join(Rails.root, 'public', '404.html'), status: 404
+    end
+  end
+
   private
 
   def current_user
