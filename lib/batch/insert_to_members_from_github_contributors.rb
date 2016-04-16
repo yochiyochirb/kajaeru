@@ -23,7 +23,5 @@ end
 
 Member.all.map do |member|
   %w(candidate voter).map { |klass| klass.classify.constantize }
-    .each do |klass|
-      klass.create!(member_id: member.id)
-    end
+                     .each { |klass| klass.create!(member_id: member.id) }
 end
