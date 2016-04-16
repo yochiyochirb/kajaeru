@@ -14,7 +14,6 @@ end
       かつ 以下の内容で新規投票する:
         | 投票対象     | コメント   |
         | #{candidate} | #{comment} |
-      ならば 投票が完了すること
     EOS
   end
 end
