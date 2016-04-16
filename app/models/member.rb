@@ -1,4 +1,4 @@
 class Member < ActiveRecord::Base
-  has_one :candidate
-  has_one :voter
+  has_many :candidates
+  has_many :voters
 end
