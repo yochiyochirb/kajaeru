@@ -1,0 +1,6 @@
+.message-area
+  - messages = flash.to_hash.slice(*%w(notice alert))
+  - if messages.any?
+    - messages.each do |flash_type, message|
+      .alert(class="#{bootstrap_alert_class(flash_type)}")
+        .message= message
