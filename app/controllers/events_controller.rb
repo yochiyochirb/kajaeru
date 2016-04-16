@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @voter = current_user.as_voter_for(@event)
   end
 
   private

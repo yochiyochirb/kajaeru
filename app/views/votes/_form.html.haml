@@ -2,7 +2,7 @@
   .col-md-12
     投票したいメンバーを選んでください。
 
-    = form_for(@vote, url: polymorphic_path([@event, @vote]), html: {class: 'candidates'}) do |f|
+    = form_for([@event, @vote], html: {class: 'candidates'}) do |f|
       %ul
         - @candidates.each do |candidate|
           %li.radio
