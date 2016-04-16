@@ -7,7 +7,7 @@ end
     target = row.fetch('投票対象')
     comment = row.fetch('コメント', 'sample comment')
 
-    click_on '投票する'
+    step '投票ページを表示する'
 
     choose target
     fill_in '推薦コメント(任意)', with: comment
