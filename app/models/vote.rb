@@ -8,6 +8,8 @@ class Vote < ActiveRecord::Base
     Vote.where(candidate_id: event.candidates.select(:id))
   end
 
+  scope :for_member, -> (member) { where(voter_id: member.voters.select(:id)) }
+
   def self.total(event:)
     # order('count_all') のイディオムはドキュメントにない (と思う) が、
     # ActiveRecord#column_alias_for のコードに "usable column name" として
