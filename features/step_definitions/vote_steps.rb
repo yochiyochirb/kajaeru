@@ -40,3 +40,21 @@ end
 
   expect(page).to have_current_path(edit_vote_path(my_vote))
 end
+
+もし(/^以下の内容で投票がある:$/) do |table|
+  table.hashes.each do |row|
+    voter = row.fetch('投票者')
+    candidate = row.fetch('投票対象者')
+    comment = row.fetch('コメント')
+
+    using_session SecureRandom.uuid do
+      steps <<-EOS
+        前提 GitHub アカウント "#{voter}" でログインしている
+        もし 以下の内容で新規投票する:
+        | 投票対象     | コメント   |
+        | #{candidate} | #{comment} |
+        かつ サインアウトする
+      EOS
+    end
+  end
+end
