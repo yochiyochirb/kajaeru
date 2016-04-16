@@ -22,6 +22,8 @@ contributors.each do |contributor|
 end
 
 Member.all.map do |member|
-  %w(candidate voter).map { |klass| klass.classify.constantize }
-                     .each { |klass| klass.create!(member_id: member.id) }
+  [Candidate, Voter].each do |klass|
+    next if klass.find_by(member_id: member.id)
+    klass.create!(member_id: member.id)
+  end
 end
