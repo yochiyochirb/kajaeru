@@ -27,3 +27,7 @@ end
 ならば(/^"([^"]*)" というメッセージが表示されていること$/) do |message|
   expect(page).to have_content(message)
 end
+
+ならば(/^まだ投票していないのがわかること$/) do
+  expect(page).to have_content('まだ投票していません')
+end
