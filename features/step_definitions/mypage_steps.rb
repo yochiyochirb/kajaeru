@@ -11,7 +11,6 @@ end
 
     steps <<-EOS
       もし Kajaeru にアクセスする
-      かつ 投票ページを表示する
       かつ 以下の内容で新規投票する:
         | 投票対象     | コメント   |
         | #{candidate} | #{comment} |
