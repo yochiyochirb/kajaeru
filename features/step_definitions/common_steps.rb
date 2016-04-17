@@ -39,13 +39,13 @@ end
 end
 
 もし(/^"([^"]*)" の投票詳細ページに直接アクセスする$/) do |nickname|
-  vote_of_others = Member.find_by(nickname: nickname).voter.vote
-  visit vote_path(vote_of_others.id)
+  vote = Member.find_by(nickname: nickname).voter.vote
+  visit vote_path(vote.id)
 end
 
 もし(/^"([^"]*)" の投票編集ページに直接アクセスする$/) do |nickname|
-  vote_of_others = Member.find_by(nickname: nickname).voter.vote
-  visit edit_vote_path(vote_of_others.id)
+  vote = Member.find_by(nickname: nickname).voter.vote
+  visit edit_vote_path(vote.id)
 end
 
 ならば(/^該当ページが見つからないこと$/) do
