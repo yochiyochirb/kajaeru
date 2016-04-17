@@ -1,11 +1,12 @@
 class VotesController < ApplicationController
   include EventSetter
 
-  before_action :require_votable_event,  except: :total
+  before_action :require_votable_event,     except: :total
   before_action :set_voter
-  before_action :require_not_voted_yet,  only: %i(new create)
-  before_action :set_candidates,         only: %i(new create edit)
-  before_action :set_vote,               only: %i(show edit update)
+  before_action :require_not_voted_yet,     only: %i(new create)
+  before_action :set_candidates,            only: %i(new create edit)
+  before_action :set_vote,                  only: %i(show edit update)
+  before_action :require_correct_candidate, only: %i(create update)
 
   def show
   end
@@ -55,6 +56,12 @@ class VotesController < ApplicationController
 
   def set_vote
     @vote = policy_scope(Vote.find(params[:id]))
+  end
+
+  def require_correct_candidate
+    unless Candidate.find(vote_params[:candidate_id]).in?(@event.candidates)
+      redirect_to event_path(@event), alert: 'この候補者には投票できません'
+    end
   end
 
   def vote_params
