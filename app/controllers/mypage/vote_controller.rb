@@ -3,7 +3,7 @@ class Mypage::VoteController < ApplicationController
 
   def show
     @events = Event.all
-    @my_votes = Vote.for_member(current_user).includes(:candidate)
+    @my_votes = Vote.by_member(current_user).includes(:candidate)
   end
 
   private
