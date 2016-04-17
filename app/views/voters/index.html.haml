@@ -4,5 +4,7 @@
   - @voters.each do |voter|
     %tr
       %td
-        = image_tag voter.member.image, alt: voter.member.nickname, size: '40x40'
+        = image_tag voter.member.image,
+                    alt: voter.member.nickname,
+                    size: '40x40'
         %span= voter.member.nickname
