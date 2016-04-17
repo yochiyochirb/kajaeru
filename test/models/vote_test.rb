@@ -3,11 +3,11 @@ require 'test_helper'
 class VoteTest < ActiveSupport::TestCase
   test 'should get votes for_this_event' do
     actual = Vote.for_this_event(events(:senbatsu_election))
-    expected = [].tap do |array|
-      array << votes(:alice_by_charlie)
-      array << votes(:alice_by_john)
-      array << votes(:john_by_doe)
-    end
+    expected = [
+      votes(:alice_by_charlie),
+      votes(:alice_by_john),
+      votes(:john_by_doe)
+    ]
     assert_equal expected.sort_by(&:id), actual.order(:id).records
   end
 
