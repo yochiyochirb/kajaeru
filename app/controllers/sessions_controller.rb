@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   skip_before_action :require_to_signin, except: :destroy
 
+  def new
+  end
+
   # OAuth 認証時のコールバック先アクション
   # NOTE development 環境では実際には OAuth 認証は行われない
   #      詳しくは config/initializers/omniauth.rb を参照
