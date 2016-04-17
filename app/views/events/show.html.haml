@@ -6,11 +6,11 @@
     %li
       - if EventPolicy.new(current_user, @event).votable?
         - if @voter&.voted_for?(@event)
-          = link_to 'Edit Vote', edit_event_vote_path(@event, @voter.vote)
+          = link_to '投票を編集する', edit_event_vote_path(@event, @voter.vote)
         - else
-          = link_to 'Vote', new_event_vote_path(@event)
+          = link_to '投票する', new_event_vote_path(@event)
       - else
         このイベントには投票できません
-    %li= link_to 'Total Votes', total_event_votes_path(@event)
-    %li= link_to 'List of candidates', event_candidates_path(@event)
-    %li= link_to 'List of voters', event_voters_path(@event)
+    %li= link_to '集計を見る', total_event_votes_path(@event)
+    %li= link_to '候補者の一覧を見る', event_candidates_path(@event)
+    %li= link_to '投票者の一覧を見る', event_voters_path(@event)
