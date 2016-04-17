@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :require_to_signin, only: :destroy
+  skip_before_action :require_to_signin, except: :destroy
 
   def new
   end
