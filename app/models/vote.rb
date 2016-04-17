@@ -2,8 +2,6 @@ class Vote < ActiveRecord::Base
   belongs_to :candidate
   belongs_to :voter
 
-  validates :candidate_id, candidate_for_same_event: true
-
   # TODO should be more DRY
   # サブクエリ使うより vote と event を関連させた方が直感的でよい？
   scope :for_this_event, -> (event) do
