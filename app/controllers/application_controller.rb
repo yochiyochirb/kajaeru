@@ -8,13 +8,13 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :render_404
 
+  private
+
   def render_404(exeption = nil)
     if exeption
       render file: File.join(Rails.root, 'public', '404.html'), status: 404
     end
   end
-
-  private
 
   def current_user
     Member.find_by(id: session[:user_id])
