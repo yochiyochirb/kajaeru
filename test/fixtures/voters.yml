@@ -35,3 +35,18 @@ robert_voter:
   <<: *DEFAULTS
   member: robert
   event: us_presidential_election
+
+alice_voter_for_mad_tea_party_represent:
+  <<: *DEFAULTS
+  member: alice
+  event: mad_tea_party_represent
+
+mad_hatter_voter:
+  <<: *DEFAULTS
+  member: mad_hatter
+  event: mad_tea_party_represent
+
+march_hare_voter:
+  <<: *DEFAULTS
+  member: march_hare
+  event: mad_tea_party_represent

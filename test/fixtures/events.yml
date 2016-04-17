@@ -6,3 +6,6 @@ senbatsu_election:
 
 us_presidential_election:
   <<: *DEFAULTS
+
+mad_tea_party_represent:
+  <<: *DEFAULTS

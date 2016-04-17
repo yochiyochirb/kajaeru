@@ -36,3 +36,18 @@ robert:
   <<: *DEFAULTS
   uid: 1022222
   image: http://pic.prepics-cdn.com/aee2982c9f207/53480915.jpeg
+
+mad_hatter:
+  <<: *DEFAULTS
+  uid: 2011111
+  image: http://pic.prepics-cdn.com/aee2982c9f207/53480915.jpeg
+
+march_hare:
+  <<: *DEFAULTS
+  uid: 2022222
+  image: http://pic.prepics-cdn.com/aee2982c9f207/53480915.jpeg
+
+dormouse:
+  <<: *DEFAULTS
+  uid: 2033333
+  image: http://pic.prepics-cdn.com/aee2982c9f207/53480915.jpeg

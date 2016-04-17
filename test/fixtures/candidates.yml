@@ -35,3 +35,18 @@ robert_candidate:
   <<: *DEFAULTS
   member: robert
   event: us_presidential_election
+
+alice_candidate_for_mad_tea_party_represent:
+  <<: *DEFAULTS
+  member: alice
+  event: mad_tea_party_represent
+
+mad_hatter_candidate:
+  <<: *DEFAULTS
+  member: mad_hatter
+  event: mad_tea_party_represent
+
+dormouse_candidate:
+  <<: *DEFAULTS
+  member: dormouse
+  event: mad_tea_party_represent
