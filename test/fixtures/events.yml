@@ -1,11 +1,8 @@
-DEFAULTS: &DEFAULTS
-  name: $LABEL
-
 senbatsu_election:
-  <<: *DEFAULTS
+  name: 選抜総選挙
 
 us_presidential_election:
-  <<: *DEFAULTS
+  name: アメリカ合衆国大統領選挙
 
 mad_tea_party_represent:
-  <<: *DEFAULTS
+  name: Mad Tea Party Represent
