@@ -1,0 +1,13 @@
+%h1.page-title
+  あなたの投票内容
+
+.my-vote
+  - if @my_vote
+    .my-vote__candidate-nickname
+      投票したメンバー
+      = @my_vote.candidate.member.nickname
+    .my-vote__comment
+      推薦コメント
+      = @my_vote.comment
+  - else
+    まだ投票していません

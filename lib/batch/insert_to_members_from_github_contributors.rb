@@ -20,3 +20,10 @@ contributors.each do |contributor|
     uid: author['id'].to_s,
     image: author['avatar_url'])
 end
+
+Member.all.map do |member|
+  [Candidate, Voter].each do |klass|
+    next if klass.find_by(member_id: member.id)
+    klass.create!(member_id: member.id)
+  end
+end

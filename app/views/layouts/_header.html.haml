@@ -14,14 +14,14 @@
           %li.active
             = link_to 'ホーム', root_path
           %li
-            - if current_user.vote
-              = link_to '編集する',edit_vote_path(current_user.vote)
+            - if current_user.voter&.vote
+              = link_to '編集する', edit_vote_path(current_user.voter.vote)
             - else
               = link_to '投票する', new_vote_path
-        %ul.nav.navbar-nav.navbar-right
+        %ul.nav.navbar-nav.navbar-right.current-user
           %li
-            = image_tag(current_user.member.image, alt: 'icon')
+            = image_tag(current_user.image, alt: 'icon', class: 'current-user__image')
           %li
-            = link_to current_user.member.nickname, '#'
+            = link_to current_user.nickname, mypage_path, class: 'current-user__mypage-link'
           %li
             = link_to 'サインアウト', signout_path, method: 'delete'

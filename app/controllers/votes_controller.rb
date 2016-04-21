@@ -1,13 +1,15 @@
 class VotesController < ApplicationController
-  before_action :set_candidates, only: %i(new edit)
-  before_action :set_vote,       only: %i(show edit update)
+  before_action :require_to_be_voter, except: :total
+  before_action :require_empty_vote,  only: %i(new)
+  before_action :set_candidates,      only: %i(new edit)
+  before_action :set_vote,            only: %i(show edit update)
 
   def new
     @vote = Vote.new
   end
 
   def create
-    @vote = Vote.create!(vote_params.merge(voter_id: current_user.id))
+    @vote = Vote.create!(vote_params.merge(voter_id: current_user.voter.id))
     redirect_to @vote
   end
 
@@ -23,11 +25,20 @@ class VotesController < ApplicationController
   private
 
   def set_candidates
-    @candidates = Candidate.all
+    @candidates = Candidate.where.not(member_id: current_user.id)
   end
 
   def set_vote
     @vote = Vote.find(params[:id])
+  end
+
+  def require_to_be_voter
+    redirect_to root_path, alert: '投票する権限がありません' unless current_user.voter
+  end
+
+  def require_empty_vote
+    redirect_to edit_vote_path(current_user.voter.vote),
+                alert: 'あなたは既に投票済みです。' if current_user.voter.vote
   end
 
   def vote_params

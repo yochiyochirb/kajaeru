@@ -20,8 +20,6 @@ group :doc do
 end
 
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'figaro'
   gem 'listen', '~> 3.0.5'
   gem 'quiet_assets'
@@ -39,7 +37,7 @@ group :development, :test do
   gem 'minitest-stub_any_instance'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'rspec-rails'
+  gem 'rspec-expectations'
 end
 
 group :test do
