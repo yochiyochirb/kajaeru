@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title 403 – Forbidden
+    %meta(name='viewport' content='width=device-width,initial-scale=1')
+    = stylesheet_link_tag 'error', media: 'all'
+  %body
+    .dialog
+      %div
+        %h1 403 – Forbidden
+        %p アクセスが禁止されています。
+        %p 時間を置いて再度アクセスするか、
+        %a{:href => "https://twitter.com/yochiyochirb/"} Kajaeru管理者
+        まで問い合わせください。
+        %p
+      %p
+        %a{:href => "/"} ホームに戻る

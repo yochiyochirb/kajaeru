@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title 404 – File NotFound
+    %title The page you were looking for doesn't exist (404)
+    %meta(name='viewport' content='width=device-width,initial-scale=1')
+    = stylesheet_link_tag 'error', media: 'all'
+  %body
+    .dialog
+      %div
+        %h1 404 – File NotFound
+        %p お探しのページは見つかりません。
+      %p
+        %a{:href => "/"} ホームに戻る
