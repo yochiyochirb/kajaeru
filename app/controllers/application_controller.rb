@@ -1,10 +1,18 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+
   protect_from_forgery with: :exception
   helper_method :current_user
   helper_method :signed_in?
   before_action :require_to_signin
 
+  rescue_from Pundit::NotAuthorizedError, with: :render_404
+
   private
+
+  def render_404
+    render file: File.join(Rails.root, 'public', '404.html'), status: 404
+  end
 
   def current_user
     Member.find_by(id: session[:user_id])

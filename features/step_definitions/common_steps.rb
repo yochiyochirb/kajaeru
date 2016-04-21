@@ -37,3 +37,17 @@ end
 ならば(/^サインインページに遷移すること$/) do
   expect(page).to have_current_path(signin_path)
 end
+
+もし(/^"([^"]*)" の投票詳細ページに直接アクセスする$/) do |nickname|
+  vote = Member.find_by(nickname: nickname).voter.vote
+  visit vote_path(vote.id)
+end
+
+もし(/^"([^"]*)" の投票編集ページに直接アクセスする$/) do |nickname|
+  vote = Member.find_by(nickname: nickname).voter.vote
+  visit edit_vote_path(vote.id)
+end
+
+ならば(/^該当ページが見つからないこと$/) do
+  expect(page.status_code).to eq(404)
+end
