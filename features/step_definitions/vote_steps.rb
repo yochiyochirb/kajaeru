@@ -33,8 +33,9 @@ end
   end
 end
 
-もし(/^新規投票画面に直接アクセスする$/) do
-  visit new_vote_path
+もし(/^"([^"]*)" イベントの新規投票画面に直接アクセスする$/) do |event_name|
+  event = Event.find_by(name: event_name)
+  visit new_event_vote_path(event)
 end
 
 # XXX 自分以外の投票編集画面には現実的に行けてはいけない（アプリでもそういう仕様になっている）のに、
