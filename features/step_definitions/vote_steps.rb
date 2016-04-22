@@ -38,14 +38,9 @@ end
   visit new_event_vote_path(event)
 end
 
-# XXX 自分以外の投票編集画面には現実的に行けてはいけない（アプリでもそういう仕様になっている）のに、
-#     current_user にアクセスできないという実装都合で placeholder にしてしまうと
-#     「自分以外の画面にも行けるというオプションがあるのか」と思われてしまいそう
-ならば(/^"([^"]*)" の投票編集画面に遷移すること$/) do |nickname|
-  member = Member.find_by(nickname: nickname)
-  my_vote = member.voter.vote
-
-  expect(page).to have_current_path(edit_vote_path(my_vote))
+ならば(/^"([^"]*)" のイベントページに遷移すること$/) do |event_name|
+  event = Event.find_by(name: event_name)
+  expect(page).to have_current_path(event_path(event))
 end
 
 もし(/^以下の内容で投票がある:$/) do |table|
