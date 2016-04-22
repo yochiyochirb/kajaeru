@@ -1,7 +1,7 @@
 %h1.page-title
   あなたの投票内容
 
-%div
+.my-vote-list
   - @events.each do |event|
     .my-vote
       .my-vote__event-name
@@ -15,7 +15,7 @@
           = my_vote.candidate.member.nickname
         .my-vote__comment
           推薦コメント
-          = my_vote.candidate.member.nickname
+          = my_vote.comment
       - elsif EventPolicy.new(current_user, event).votable?
         .my-vote__information
           まだ投票していません
