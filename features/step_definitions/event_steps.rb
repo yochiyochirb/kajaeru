@@ -12,7 +12,12 @@ end
   end
 end
 
-# TODO まだ使ってない
-もし(/^"([^"]*)" のイベントページを表示する$/) do |event_name|
-  click_on '投票する'
+もし(/^"([^"]*)" のリンクをクリックする$/) do |event_name|
+  click_on event_name
+end
+
+ならば(/^"([^"]*)" のイベントページが表示されること$/) do |event_name|
+  within '.page-title' do
+    expect(page).to have_content(event_name)
+  end
 end
