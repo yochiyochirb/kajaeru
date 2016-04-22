@@ -21,3 +21,11 @@ end
     expect(page).to have_content(event_name)
   end
 end
+
+もし(/^"([^"]*)" イベントのページを表示する$/) do |event_name|
+  steps <<-EOS
+    もし Kajaeru にアクセスする
+    かつ イベント一覧ページを表示する
+    かつ "#{event_name}" イベントのリンクをクリックする
+  EOS
+end
