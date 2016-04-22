@@ -6,6 +6,10 @@ end
   expect(page).to have_link link
 end
 
+ならば(/^"([^"]*)" というリンクが表示されていないこと$/) do |link|
+  expect(page).not_to have_link link
+end
+
 もし(/^Kajaeru にアクセスする$/) do
   visit '/'
 end

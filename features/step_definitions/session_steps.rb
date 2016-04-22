@@ -38,7 +38,7 @@ end
 
     step %(GitHub アカウント "#{nickname}" でログインしている)
 
-    Member.find_by!(nickname: nickname).voter&.destroy if vote_permission == 'なし'
+    Member.find_by(nickname: nickname).voters.each(&:destroy) if vote_permission == 'なし'
   end
 end
 

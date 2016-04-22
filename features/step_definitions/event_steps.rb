@@ -29,3 +29,9 @@ end
     かつ "#{event_name}" イベントのリンクをクリックする
   EOS
 end
+
+ならば(/^イベントへの投票権限がないことを示す表示がされていること$/) do
+  within '.event-menu' do
+    expect(page).to have_content('このイベントには投票できません')
+  end
+end
