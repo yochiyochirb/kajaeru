@@ -1,13 +1,19 @@
-もし(/^投票ページを表示する$/) do
+もし(/^"([^"]*)" イベントの投票ページを表示する$/) do |event_name|
+  steps <<-EOS
+    もし イベント一覧ページを表示する
+    かつ "#{event_name}" イベントのリンクをクリックする
+  EOS
+
   click_on '投票する'
 end
 
 もし(/^以下の内容で新規投票(?:する|している):$/) do |table|
   table.hashes.each do |row|
+    event_name = row.fetch('イベント')
     target = row.fetch('投票対象')
     comment = row.fetch('コメント', 'sample comment')
 
-    step '投票ページを表示する'
+    step %("#{event_name}" イベントの投票ページを表示する)
 
     choose target
     fill_in '推薦コメント(任意)', with: comment
@@ -43,6 +49,7 @@ end
 
 もし(/^以下の内容で投票がある:$/) do |table|
   table.hashes.each do |row|
+    event_name = row.fetch('イベント')
     voter = row.fetch('投票者')
     candidate = row.fetch('投票対象者')
     comment = row.fetch('コメント')
@@ -51,8 +58,8 @@ end
       steps <<-EOS
         前提 GitHub アカウント "#{voter}" でログインしている
         もし 以下の内容で新規投票する:
-        | 投票対象     | コメント   |
-        | #{candidate} | #{comment} |
+        | イベント      | 投票対象     | コメント   |
+        | #{event_name} | #{candidate} | #{comment} |
         かつ サインアウトする
       EOS
     end

@@ -4,7 +4,7 @@
 %div
   - @events.each do |event|
     .my-vote
-      .my-vote__event_name
+      .my-vote__event-name
         イベント
         = event.name
       - voter = current_user.as_voter_for(event)

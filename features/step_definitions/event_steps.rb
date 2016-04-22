@@ -12,7 +12,7 @@ end
   end
 end
 
-もし(/^"([^"]*)" のリンクをクリックする$/) do |event_name|
+もし(/^"([^"]*)" イベントのリンクをクリックする$/) do |event_name|
   click_on event_name
 end
 
