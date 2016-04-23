@@ -1,0 +1,7 @@
+%h1 イベント一覧
+
+%table.table.event-list
+  - @events.each do |event|
+    %tr
+      %td.event-list__event-name
+        = link_to event.name, event_path(event)

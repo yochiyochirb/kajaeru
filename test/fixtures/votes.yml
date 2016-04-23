@@ -1,0 +1,24 @@
+# イベント: senbatsu_election
+
+# charlie, john は alice に投票
+<% %w(charlie john).each do |voter| %>
+<% candidate = 'alice' %>
+<%= candidate %>_by_<%= voter %>:
+  comment: <%= candidate %>! I choose you!
+  candidate: <%= "#{candidate}_candidate" %>
+  voter: <%= "#{voter}_voter" %>
+<% end %>
+
+# doe は john に投票
+john_by_doe:
+  comment: Thank you, John
+  candidate: john_candidate
+  voter: doe_voter
+
+# イベント: us_presidential_election
+
+# robert は muddy に投票
+muddy_by_robert:
+  comment: THE BLUES IS NUMBER ONE
+  candidate: muddy_candidate
+  voter: robert_voter

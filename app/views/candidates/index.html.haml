@@ -1,0 +1,10 @@
+%h1 #{@event.name} の候補者一覧
+
+%table.table.candidate-list
+  - @candidates.each do |candidate|
+    %tr
+      %td
+        = image_tag candidate.member.image,
+                    alt: candidate.member.nickname,
+                    size: '40x40'
+        %span= candidate.member.nickname

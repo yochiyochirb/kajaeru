@@ -6,14 +6,15 @@ end
 
 前提(/^以下の内容で投票が済んでいる:$/) do |table|
   table.hashes.each do |row|
+    event_name = row.fetch('イベント')
     candidate = row.fetch('投票対象者')
     comment = row.fetch('コメント')
 
     steps <<-EOS
       もし Kajaeru にアクセスする
       かつ 以下の内容で新規投票する:
-        | 投票対象     | コメント   |
-        | #{candidate} | #{comment} |
+        | イベント      | 投票対象     | コメント   |
+        | #{event_name} | #{candidate} | #{comment} |
     EOS
   end
 end
@@ -23,7 +24,7 @@ end
     candidate = row.fetch('投票対象者')
     comment = row.fetch('コメント')
 
-    within '.my-vote' do
+    within '.my-vote-list' do
       expect(page).to have_content(candidate)
       expect(page).to have_content(comment)
     end

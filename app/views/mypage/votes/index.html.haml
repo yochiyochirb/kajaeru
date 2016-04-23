@@ -1,0 +1,24 @@
+%h1.page-title
+  あなたの投票内容
+
+.my-vote-list
+  - @events.each do |event|
+    .my-vote
+      .my-vote__event-name
+        イベント
+        = event.name
+      - voter = current_user.as_voter_for(event)
+      - if voter&.voted_for?(event)
+        - my_vote = @my_votes.find_by(voter_id: voter.id)
+        .my-vote__candidate-nickname
+          投票したメンバー
+          = my_vote.candidate.member.nickname
+        .my-vote__comment
+          推薦コメント
+          = my_vote.comment
+      - elsif EventPolicy.new(current_user, event).votable?
+        .my-vote__information
+          まだ投票していません
+      - else
+        .my-vote__information
+          このイベントには投票できません
