@@ -1,7 +1,7 @@
-class Mypage::VoteController < ApplicationController
-  before_action :redirect_to_top, unless: :signed_in?, only: :show
+class Mypage::VotesController < ApplicationController
+  before_action :redirect_to_top, unless: :signed_in?, only: :index
 
-  def show
+  def index
     @events = Event.all
     @my_votes = Vote.by_member(current_user).includes(:candidate)
   end

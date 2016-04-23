@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   delete '/signout'              => 'sessions#destroy'
 
   resource :mypage, only: :show do
-    resource :vote, only: :show, controller: 'mypage/vote'
+    scope module: :mypage do
+      resources :votes, only: :index
+    end
   end
 end
