@@ -77,7 +77,7 @@ end
   table.hashes.each.with_index(1) do |row, index|
     target = row.fetch('投票対象')
     total = row.fetch('得票数')
-    comments = eval(row.fetch('コメント'))
+    comments = row.fetch('コメント').split(',').map(&:strip)
 
     within(:xpath, %{(//div[@class="vote-result"])[#{index}]}) do
       expect(page).to have_content("#{target} #{total} 票")
