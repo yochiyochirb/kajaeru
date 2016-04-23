@@ -87,3 +87,9 @@ end
     end
   end
 end
+
+ならば(/^集計結果が表示されていること$/) do
+  within 'h1' do
+    expect(page).to have_content('集計画面')
+  end
+end

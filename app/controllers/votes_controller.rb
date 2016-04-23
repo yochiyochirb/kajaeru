@@ -31,6 +31,8 @@ class VotesController < ApplicationController
   end
 
   def total
+    return redirect_to event_path(@event), alert: '集計結果はまだ公開されていません' unless @event.total_opened?
+
     @vote_results = Vote.total(event: @event)
   end
 
