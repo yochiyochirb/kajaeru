@@ -35,3 +35,13 @@ end
     expect(page).to have_content('このイベントには投票できません')
   end
 end
+
+前提(/^以下のイベントが登録されている:$/) do |table|
+  # XXX 今は画面からイベントを作成できない
+  table.hashes.each do |row|
+    event_name = row.fetch('イベント名')
+    state = row.fetch('集計の公開状態') == '公開' ? true : false
+
+    Event.create!(name: event_name, total_opened: state)
+  end
+end

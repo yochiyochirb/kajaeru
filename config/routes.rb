@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :events, only: %i(index show) do
     resources :candidates, only: %i(index)
     resources :votes, except: %i(index destroy) do
+      # TODO result の方が適切な気がする
       get 'total', on: :collection
     end
   end
