@@ -30,7 +30,7 @@ end
   expect(current_path).to eq signin_path
 end
 
-前提(/^以下のメンバーがサインインしている:$/) do |table|
+前提(/^以下の投票権限のメンバーがサインインしている:$/) do |table|
   table.hashes.each do |row|
     nickname = row.fetch('ニックネーム')
     vote_permission = row.fetch('投票権限', 'あり')
@@ -38,6 +38,10 @@ end
 
     step %(GitHub アカウント "#{nickname}" でサインインしている)
 
-    Member.find_by!(nickname: nickname).voter&.destroy if vote_permission == 'なし'
+    Member.find_by(nickname: nickname).voters.each(&:destroy) if vote_permission == 'なし'
   end
+end
+
+もし(/^サインアウトする$/) do
+  find('.current-user__signout-link').click
 end

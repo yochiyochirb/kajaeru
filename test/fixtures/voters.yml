@@ -4,19 +4,49 @@ DEFAULTS: &DEFAULTS
 alice_voter:
   <<: *DEFAULTS
   member: alice
+  event: senbatsu_election
 
 bob_voter:
   <<: *DEFAULTS
   member: bob
+  event: senbatsu_election
 
 charlie_voter:
   <<: *DEFAULTS
   member: charlie
+  event: senbatsu_election
 
 john_voter:
   <<: *DEFAULTS
   member: john
+  event: senbatsu_election
 
 doe_voter:
   <<: *DEFAULTS
   member: doe
+  event: senbatsu_election
+
+muddy_voter:
+  <<: *DEFAULTS
+  member: muddy
+  event: us_presidential_election
+
+robert_voter:
+  <<: *DEFAULTS
+  member: robert
+  event: us_presidential_election
+
+alice_voter_for_mad_tea_party_represent:
+  <<: *DEFAULTS
+  member: alice
+  event: mad_tea_party_represent
+
+mad_hatter_voter:
+  <<: *DEFAULTS
+  member: mad_hatter
+  event: mad_tea_party_represent
+
+march_hare_voter:
+  <<: *DEFAULTS
+  member: march_hare
+  event: mad_tea_party_represent

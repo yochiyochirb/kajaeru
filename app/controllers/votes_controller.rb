@@ -1,44 +1,67 @@
 class VotesController < ApplicationController
-  before_action :require_to_be_voter, except: :total
-  before_action :require_empty_vote,  only: %i(new)
-  before_action :set_candidates,      only: %i(new edit)
-  before_action :set_vote,            only: %i(show edit update)
+  include EventSetter
+
+  before_action :require_votable_event,     except: :total
+  before_action :set_voter
+  before_action :require_not_voted_yet,     only: %i(new create)
+  before_action :set_candidates,            only: %i(new create edit)
+  before_action :set_vote,                  only: %i(show edit update)
+  before_action :require_correct_candidate, only: %i(create update)
+
+  def show
+  end
 
   def new
-    @vote = Vote.new
+    @vote = @voter.build_vote
   end
 
   def create
-    @vote = Vote.create!(vote_params.merge(voter_id: current_user.voter.id))
-    redirect_to @vote
+    @vote = @voter.build_vote(vote_params)
+
+    if @vote.save
+      redirect_to event_vote_path(@event, @vote)
+    else
+      render :new
+    end
   end
 
   def update
     @vote.update!(vote_params)
-    redirect_to @vote
+    redirect_to event_vote_path(@event, @vote)
   end
 
   def total
-    @vote_results = Vote.total
+    @vote_results = Vote.total(event: @event)
   end
 
   private
 
+  def require_votable_event
+    authorize @event, :votable?
+  end
+
+  def set_voter
+    @voter = current_user.as_voter_for(@event)
+  end
+
+  def require_not_voted_yet
+    redirect_to event_path(@event),
+                alert: 'すでにこのイベントには投票済みです' if @voter.voted_for?(@event)
+  end
+
   def set_candidates
-    @candidates = Candidate.where.not(member_id: current_user.id)
+    @candidates = Candidate.for_this_event(@event)
+                           .where.not(member_id: current_user.id)
   end
 
   def set_vote
-    @vote = Vote.find(params[:id])
+    @vote = policy_scope(Vote.find(params[:id]))
   end
 
-  def require_to_be_voter
-    redirect_to root_path, alert: '投票する権限がありません' unless current_user.voter
-  end
-
-  def require_empty_vote
-    redirect_to edit_vote_path(current_user.voter.vote),
-                alert: 'あなたは既に投票済みです。' if current_user.voter.vote
+  def require_correct_candidate
+    unless Candidate.find(vote_params[:candidate_id]).in?(@event.candidates)
+      redirect_to event_path(@event), alert: 'この候補者には投票できません'
+    end
   end
 
   def vote_params
