@@ -1,4 +1,4 @@
-前提(/^GitHub アカウント "([^"]*)" でログインしている$/) do |account|
+前提(/^GitHub アカウント "([^"]*)" でサインインしている$/) do |account|
   member = Member.find_by!(nickname: account)
 
   OmniAuth.config.test_mode = true
@@ -30,13 +30,13 @@ end
   expect(current_path).to eq signin_path
 end
 
-前提(/^以下の投票権限のメンバーがログインしている:$/) do |table|
+前提(/^以下の投票権限のメンバーがサインインしている:$/) do |table|
   table.hashes.each do |row|
     nickname = row.fetch('ニックネーム')
     vote_permission = row.fetch('投票権限', 'あり')
     expect(vote_permission).to be_in(%w(あり なし))
 
-    step %(GitHub アカウント "#{nickname}" でログインしている)
+    step %(GitHub アカウント "#{nickname}" でサインインしている)
 
     Member.find_by(nickname: nickname).voters.each(&:destroy) if vote_permission == 'なし'
   end

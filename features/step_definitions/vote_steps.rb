@@ -54,7 +54,7 @@ end
 
     using_session SecureRandom.uuid do
       steps <<-EOS
-        前提 GitHub アカウント "#{voter}" でログインしている
+        前提 GitHub アカウント "#{voter}" でサインインしている
         もし 以下の内容で新規投票する:
         | イベント      | 投票対象     | コメント   |
         | #{event_name} | #{candidate} | #{comment} |
