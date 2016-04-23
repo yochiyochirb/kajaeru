@@ -44,6 +44,8 @@ end
 end
 
 もし(/^以下の内容で投票がある:$/) do |table|
+  Vote.all.each(&:destroy)
+
   table.hashes.each do |row|
     event_name = row.fetch('イベント')
     voter = row.fetch('投票者')
@@ -58,6 +60,30 @@ end
         | #{event_name} | #{candidate} | #{comment} |
         かつ サインアウトする
       EOS
+    end
+  end
+end
+
+もし(/^"([^"]*)" イベントの集計ページを表示する$/) do |event_name|
+  steps <<-EOS
+    もし イベント一覧ページを表示する
+    かつ "#{event_name}" イベントのリンクをクリックする
+  EOS
+
+  click_on '集計を見る'
+end
+
+ならば(/^以下のように各投票対象者の得票数とコメントが表示されている:$/) do |table|
+  table.hashes.each.with_index(1) do |row, index|
+    target = row.fetch('投票対象')
+    total = row.fetch('得票数')
+    comments = eval(row.fetch('コメント'))
+
+    within(:xpath, %{(//div[@class="vote-result"])[#{index}]}) do
+      expect(page).to have_content("#{target} #{total} 票")
+      comments.each do |comment|
+        expect(page).to have_content(comment)
+      end
     end
   end
 end
