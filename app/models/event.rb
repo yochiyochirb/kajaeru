@@ -6,6 +6,6 @@ class Event < ActiveRecord::Base
 
   # 開催期間中かどうか
   def in_session?
-    Time.zone.now.between?(starts_at, ends_at)
+    Time.zone.now.between?(voting_starts_at, voting_ends_at)
   end
 end
