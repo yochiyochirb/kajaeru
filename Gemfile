@@ -11,7 +11,6 @@ gem 'omniauth-github'
 gem 'puma'
 gem 'pundit'
 gem 'sass-rails', '~> 5.0'
-gem 'timecop'
 gem 'turbolinks', '~> 5.x'
 gem 'uglifier', '>= 1.3.0'
 gem 'zocial-rails'
@@ -44,6 +43,7 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'timecop'
 end
 
 group :test, :production do
