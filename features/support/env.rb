@@ -65,3 +65,7 @@ Before do
   end
   ActiveRecord::FixtureSet.create_fixtures(fixtures_folder, fixtures)
 end
+
+After do
+  Timecop.return
+end
