@@ -29,7 +29,7 @@ class EventTest < ActiveSupport::TestCase
     Timecop.return
   end
 
-  test 'in_session? shouls return true if current time is in session' do
+  test 'in_session? should return true if current time is in session' do
     Timecop.freeze(Time.zone.parse('2016-04-01'))
     event = Event.new(name: 'Crazy Sexy Event',
                       starts_at: Time.zone.parse('2016-03-01'),
@@ -38,7 +38,7 @@ class EventTest < ActiveSupport::TestCase
     Timecop.return
   end
 
-  test 'in_session? shouls return false if current time is not in session' do
+  test 'in_session? should return false if current time is not in session' do
     Timecop.freeze(Time.zone.parse('2016-04-01'))
     event = Event.new(name: 'Crazy Sexy Event',
                       starts_at: Time.zone.parse('2016-04-02'),
