@@ -36,6 +36,12 @@ end
   end
 end
 
+ならば(/^イベントが投票期間中でないことを示す表示がされていること$/) do
+  within '.event-menu' do
+    expect(page).to have_content('このイベントの投票期間ではありません')
+  end
+end
+
 前提(/^以下のイベントが登録されている:$/) do |table|
   # XXX 今は画面からイベントを作成できない
   table.hashes.each do |row|
