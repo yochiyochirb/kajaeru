@@ -23,23 +23,31 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test 'in_session? should return true if current time is in session' do
-    Timecop.freeze(Time.zone.parse('2016-04-01'))
+    Timecop.freeze(Time.zone.parse('2016-04-01 12:34:56'))
     event = Event.new(name: 'Crazy Sexy Event',
-                      voting_starts_at: Time.zone.parse('2016-03-01'),
-                      voting_ends_at: Time.zone.parse('2016-04-30'))
+                      voting_starts_at: Time.zone.parse('2016-03-01 00:00:00'),
+                      voting_ends_at: Time.zone.parse('2016-04-30 00:00:00'))
+    assert event.in_session?
+    event = Event.new(name: 'Crazy Sexy Event',
+                      voting_starts_at: Time.zone.parse('2016-04-01 12:34:56'),
+                      voting_ends_at: Time.zone.parse('2016-04-30 00:00:00'))
+    assert event.in_session?
+    event = Event.new(name: 'Crazy Sexy Event',
+                      voting_starts_at: Time.zone.parse('2016-03-01 00:00:00'),
+                      voting_ends_at: Time.zone.parse('2016-04-01 12:34:56'))
     assert event.in_session?
     Timecop.return
   end
 
   test 'in_session? should return false if current time is not in session' do
-    Timecop.freeze(Time.zone.parse('2016-04-01'))
+    Timecop.freeze(Time.zone.parse('2016-04-01 12:34:56'))
     event = Event.new(name: 'Crazy Sexy Event',
-                      voting_starts_at: Time.zone.parse('2016-04-02'),
-                      voting_ends_at: Time.zone.parse('2016-04-30'))
+                      voting_starts_at: Time.zone.parse('2016-04-01 12:34:57'),
+                      voting_ends_at: Time.zone.parse('2016-04-30 00:00:00'))
     refute event.in_session?
     event = Event.new(name: 'Crazy Sexy Event',
-                      voting_starts_at: Time.zone.parse('2016-03-01'),
-                      voting_ends_at: Time.zone.parse('2016-03-31'))
+                      voting_starts_at: Time.zone.parse('2016-03-01 00:00:00'),
+                      voting_ends_at: Time.zone.parse('2016-04-01 12:34:55'))
     refute event.in_session?
     Timecop.return
   end
