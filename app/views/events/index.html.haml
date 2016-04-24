@@ -13,5 +13,5 @@
           = link_to event.name, event_path(event)
         %td.event-list__event-voting-starts-at
           = event.voting_starts_at.strftime('%Y-%m-%d %H:%M:%S')
-        %td.event-list__event-ends-at
+        %td.event-list__event-voting-ends-at
           = event.voting_ends_at.strftime('%Y-%m-%d %H:%M:%S')
