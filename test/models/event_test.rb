@@ -21,4 +21,26 @@ class EventTest < ActiveSupport::TestCase
     assert_equal [I18n.t('errors.messages.too_long')[:other].gsub('%{count}', '255')],
                  event.errors.messages[:name]
   end
+
+  test 'in_session? shouls return true if current time is in session' do
+    Timecop.freeze(Time.zone.parse('2016-04-01'))
+    event = Event.new(name: 'Crazy Sexy Event',
+                      starts_at: Time.zone.parse('2016-03-01'),
+                      ends_at: Time.zone.parse('2016-04-30'))
+    assert event.in_session?
+    Timecop.return
+  end
+
+  test 'in_session? shouls return false if current time is not in session' do
+    Timecop.freeze(Time.zone.parse('2016-04-01'))
+    event = Event.new(name: 'Crazy Sexy Event',
+                      starts_at: Time.zone.parse('2016-04-02'),
+                      ends_at: Time.zone.parse('2016-04-30'))
+    refute event.in_session?
+    event = Event.new(name: 'Crazy Sexy Event',
+                      starts_at: Time.zone.parse('2016-03-01'),
+                      ends_at: Time.zone.parse('2016-03-31'))
+    refute event.in_session?
+    Timecop.return
+  end
 end
