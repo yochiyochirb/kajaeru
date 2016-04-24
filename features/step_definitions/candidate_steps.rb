@@ -2,7 +2,7 @@
   table.hashes.each do |row|
     member = Member.find_by(nickname: row.fetch('ニックネーム'))
     event = Event.find_by(name: row.fetch('イベント'))
-    event.candidates.create(member: member)
+    event.candidates.create!(member: member)
   end
 end
 

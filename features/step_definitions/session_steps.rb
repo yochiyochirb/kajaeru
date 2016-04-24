@@ -40,7 +40,7 @@ end
     step %(GitHub アカウント "#{member.nickname}" でサインインしている)
 
     if vote_permission == 'あり'
-      event.voters.create(member: member) \
+      event.voters.create!(member: member) \
                          unless member.voters.find_by(event_id: event.id)
     else
       member.voters.each do |voter|
