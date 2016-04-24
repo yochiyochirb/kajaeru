@@ -22,6 +22,13 @@ class EventTest < ActiveSupport::TestCase
                  event.errors.messages[:name]
   end
 
+  test 'being_held should query only events begin held' do
+    Timecop.freeze(Time.zone.parse('2016-04-01'))
+    expected = ["Mad Tea Party Represent", "選抜総選挙", "アメリカ合衆国大統領選挙"]
+    assert_equal expected.sort, Event.being_held.pluck(:name).sort
+    Timecop.return
+  end
+
   test 'in_session? shouls return true if current time is in session' do
     Timecop.freeze(Time.zone.parse('2016-04-01'))
     event = Event.new(name: 'Crazy Sexy Event',
