@@ -40,8 +40,11 @@ end
   # XXX 今は画面からイベントを作成できない
   table.hashes.each do |row|
     event_name = row.fetch('イベント名')
-    state = row.fetch('集計の公開状態') == '公開' ? true : false
+    state = row.fetch('集計の公開状態', '公開') == '公開' ? true : false
+    starts_at = row.fetch('開始日時', Time.zone.parse('1000-01-01'))
+    ends_at = row.fetch('終了日時', Time.zone.parse('3000-01-01'))
 
-    Event.create!(name: event_name, total_opened: state)
+    Event.create!(name: event_name, total_opened: state,
+                  starts_at: starts_at, ends_at: ends_at)
   end
 end
