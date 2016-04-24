@@ -8,7 +8,7 @@
 .event-menu
   %ul
     %li
-      - if @event.in_session?
+      - if @event.voting_in_session?
         - if EventPolicy.new(current_user, @event).votable?
           - if @voter.voted_for?(@event)
             = link_to '投票を編集する', edit_event_vote_path(@event, @voter.vote)

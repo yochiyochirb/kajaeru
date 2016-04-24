@@ -2,7 +2,7 @@ class VotesController < ApplicationController
   include EventSetter
 
   before_action :require_votable_event,     except: :total
-  before_action :require_event_in_session,  except: :total
+  before_action :require_event_voting_in_session,  except: :total
   before_action :set_voter
   before_action :require_not_voted_yet,     only: %i(new create)
   before_action :set_candidates,            only: %i(new create edit)
@@ -43,9 +43,9 @@ class VotesController < ApplicationController
     authorize @event, :votable?
   end
 
-  def require_event_in_session
+  def require_event_voting_in_session
     redirect_to event_path(@event),
-                alert: 'このイベントの投票期間ではありません' unless @event.in_session?
+                alert: 'このイベントの投票期間ではありません' unless @event.voting_in_session?
   end
 
   def set_voter
