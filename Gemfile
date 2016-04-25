@@ -43,6 +43,7 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'timecop'
 end
 
 group :test, :production do

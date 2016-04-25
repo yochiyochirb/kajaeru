@@ -59,3 +59,7 @@ end
 ならば(/^該当ページが見つからないこと$/) do
   expect(page.status_code).to eq(404)
 end
+
+前提(/^今は "([^"]*)" である$/) do |datetime_str|
+  Timecop.freeze(Time.zone.parse(datetime_str))
+end

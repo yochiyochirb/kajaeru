@@ -1,5 +1,7 @@
 DEFAULTS: &DEFAULTS
   total_opened: true
+  voting_starts_at: <%= Time.zone.parse('2000-01-01') %>
+  voting_ends_at: <%= Time.zone.parse('3000-01-01') %>
 
 senbatsu_election:
   <<: *DEFAULTS
@@ -12,3 +14,13 @@ us_presidential_election:
 mad_tea_party_represent:
   <<: *DEFAULTS
   name: Mad Tea Party Represent
+
+ruby_kaja_1000:
+  name: Ruby Kaja 1000
+  voting_starts_at: <%= Time.zone.parse('2000-01-01') %>
+  voting_ends_at: <%= Time.zone.parse('2000-12-31') %>
+
+ruby_kaja_3000:
+  name: Ruby Kaja 3000
+  voting_starts_at: <%= Time.zone.parse('3000-01-01') %>
+  voting_ends_at: <%= Time.zone.parse('3000-12-31') %>

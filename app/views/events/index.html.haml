@@ -1,7 +1,17 @@
 %h1 イベント一覧
 
 %table.table.event-list
-  - @events.each do |event|
+  %thead
     %tr
-      %td.event-list__event-name
-        = link_to event.name, event_path(event)
+      %th イベント名
+      %th 開始日時
+      %th 終了日時
+  - @events.each do |event|
+    %tbody
+      %tr
+        %td.event-list__event-name
+          = link_to event.name, event_path(event)
+        %td.event-list__event-voting-starts-at
+          = event.voting_starts_at.strftime('%Y-%m-%d %H:%M:%S')
+        %td.event-list__event-voting-ends-at
+          = event.voting_ends_at.strftime('%Y-%m-%d %H:%M:%S')
