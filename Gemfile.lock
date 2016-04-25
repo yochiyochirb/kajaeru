@@ -139,7 +139,7 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     minitest-stub_any_instance (1.0.1)
-    multi_json (1.11.2)
+    multi_json (1.11.3)
     multi_test (0.1.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -221,7 +221,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    ruby-progressbar (1.7.5)
+    ruby-progressbar (1.8.0)
     ruby_parser (3.8.1)
       sexp_processor (~> 4.1)
     sass (3.4.22)
