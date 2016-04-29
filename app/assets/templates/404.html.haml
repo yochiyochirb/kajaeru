@@ -3,12 +3,13 @@
   %head
     %title 404 – File NotFound
     %title The page you were looking for doesn't exist (404)
-    %meta(name='viewport' content='width=device-width,initial-scale=1' charset='UTF-8')
-    = stylesheet_link_tag 'error', media: 'all'
+    %meta(name="viewport" content="width=device-width,initial-scale=1" charset="UTF-8")
+    = stylesheet_link_tag "error", media: "all"
   %body
     .dialog
       %div
         %h1 404 – File NotFound
+        = image_tag( "error.png", alt: "エラー", width: "250" )
         %p お探しのページは見つかりません。
       %p
-        %a{:href => "/"} ホームに戻る
+        %a{ :href => "/" } ホームに戻る

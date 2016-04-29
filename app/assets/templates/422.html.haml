@@ -2,16 +2,17 @@
 %html
   %head
     %title 422 – Unprocessable Entity
-    %meta(name='viewport' content='width=device-width,initial-scale=1' charset='UTF-8')
-    = stylesheet_link_tag 'error', media: 'all'
+    %meta(name="viewport" content="width=device-width,initial-scale=1" charset="UTF-8")
+    = stylesheet_link_tag "error", media: "all"
   %body
     .dialog
       %div
         %h1 422 – Unprocessable Entity
+        = image_tag( "error.png", alt: "エラー", width: "250" )
         %p ページが表示できません。
         繰り返し同様の作業をしても改善されない場合、
-        %a{:href => "https://twitter.com/yochiyochirb/"} Kajaeru管理者
+        %a{ :href => "https://twitter.com/yochiyochirb/" } Kajaeru管理者
         まで問い合わせください。
         %p
       %p
-        %a{:href => "/"} ホームに戻る
+        %a{ :href => "/" } ホームに戻る
