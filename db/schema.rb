@@ -11,12 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307085644) do
+ActiveRecord::Schema.define(version: 20160424155721) do
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                                             null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.boolean  "total_opened",     default: false,                 null: false
+    t.datetime "voting_starts_at", default: '1970-01-01 00:00:00', null: false
+    t.datetime "voting_ends_at",   default: '1970-01-01 00:00:00', null: false
   end
 
   create_table "members", force: :cascade do |t|
@@ -35,7 +38,10 @@ ActiveRecord::Schema.define(version: 20150307085644) do
     t.string   "type",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "event_id"
   end
+
+  add_index "roles", ["event_id"], name: "index_roles_on_event_id"
 
   create_table "votes", force: :cascade do |t|
     t.text     "comment"

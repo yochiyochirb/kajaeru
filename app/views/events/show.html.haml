@@ -1,0 +1,22 @@
+.page-title
+  %h1= @event.name
+
+.voting-period
+  %p
+    %b= voting_period(@event)
+
+.event-menu
+  %ul
+    %li
+      - if @event.voting_in_session?
+        - if EventPolicy.new(current_user, @event).votable?
+          - if @voter.voted_for?(@event)
+            = link_to '投票を編集する', edit_event_vote_path(@event, @voter.vote)
+          - else
+            = link_to '投票する', new_event_vote_path(@event)
+        - else
+          このイベントには投票できません
+      - else
+        このイベントの投票期間ではありません
+    %li= link_to '集計を見る', total_event_votes_path(@event)
+    %li= link_to '候補者の一覧を見る', event_candidates_path(@event)

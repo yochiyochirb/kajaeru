@@ -6,6 +6,10 @@ end
   expect(page).to have_link link
 end
 
+ならば(/^"([^"]*)" というリンクが表示されていないこと$/) do |link|
+  expect(page).not_to have_link link
+end
+
 もし(/^Kajaeru にアクセスする$/) do
   visit '/'
 end
@@ -36,4 +40,26 @@ end
 
 ならば(/^サインインページに遷移すること$/) do
   expect(page).to have_current_path(signin_path)
+end
+
+もし(/^"([^"]*)" イベントの "([^"]*)" の投票詳細ページに直接アクセスする$/) do |event_name, nickname|
+  event = Event.find_by(name: event_name)
+  member = Member.find_by(nickname: nickname)
+  vote = Vote.by_member(member).for_this_event(event).first
+  visit event_vote_path(event, vote)
+end
+
+もし(/^"([^"]*)" イベントの "([^"]*)" の投票編集ページに直接アクセスする$/) do |event_name, nickname|
+  event = Event.find_by(name: event_name)
+  member = Member.find_by(nickname: nickname)
+  vote = Vote.by_member(member).for_this_event(event).first
+  visit edit_event_vote_path(event, vote)
+end
+
+ならば(/^該当ページが見つからないこと$/) do
+  expect(page.status_code).to eq(404)
+end
+
+前提(/^今は "([^"]*)" である$/) do |datetime_str|
+  Timecop.freeze(Time.zone.parse(datetime_str))
 end
