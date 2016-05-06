@@ -17,7 +17,7 @@ body {
   border-left-color: #999;
   box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
 
-  & > div {
+  > div {
     padding: 7px 12% 0;
 
     border: 1px solid #ccc;
@@ -29,7 +29,7 @@ body {
 
   }
 
-  & > p {
+  > p {
     margin: 0 0 1em;
     padding: 1em;
 
