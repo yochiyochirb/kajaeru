@@ -2,17 +2,17 @@
 %html
   %head
     %title 403 – Forbidden
-    %meta(name="viewport" content="width=device-width" charset="UTF-8")
-    = stylesheet_link_tag "error", media: "all"
+    %meta{name: "viewport", content: "width=device-width", charset: "UTF-8"}
+    = stylesheet_link_tag("error", media: "all")
   %body
     .dialog
       %div
         %h1 403 – Forbidden
-        = image_tag( "error.png", alt: "エラー", width: "250" )
+        = image_tag("error.png", alt: "エラー", width: "250")
         %p アクセスが禁止されています。
         %p 時間を置いて再度アクセスするか、
-        %a{ :href => "https://twitter.com/yochiyochirb/" } Kajaeru管理者
+        %a{href: "https://twitter.com/yochiyochirb/"} Kajaeru管理者
         まで問い合わせください。
         %p
       %p
-        %a{ :href => "/" } ホームに戻る
+        %a{href: "/"} ホームに戻る
